@@ -1,0 +1,21 @@
+{
+  "name": "crawler-nodejs-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.7",
+    "nodemon": "^2.0.15",
+    "cheerio": "^1.0.0-rc.10",
+    "needle": "^3.0.0"
+  }
+}
