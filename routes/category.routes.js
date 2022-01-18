@@ -9,4 +9,11 @@ router.post('/', async (req, res) => {
     return res.json(result);
 })
 
+router.get('/', async (req, res) => {
+    const result = await categoryController.findAll();
+    if(!result)
+        return res.json({ isSuccess: false });
+    return res.json(result);
+})
+
 module.exports = router;

@@ -4,7 +4,6 @@ const rootRouters = require('./routes/index');
 const mongoose = require('mongoose');
 const fs = require('fs')
 const app = express();
-const cheerio = require('cheerio');
 
 // Configuring the database
 const dbConfig = require('./config/database.config');
@@ -26,25 +25,6 @@ mongoose.connect(dbConfig.url, {
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use('/api', rootRouters)
-app.get('/crawlers', async (req, res) => {
-    try {
-        await downloadHtmlFromUrl("https://www.spapartsproshop.com/")
-        
-        return res.status(200).json({ isSuccess: true })
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error });
-    }
-});
-
-
-app.get('/crawlers/test', async (req, res) => {
-    const homePageBuffer = fs.readFileSync('templates/template-1642493417352.html');
-    const $ = cheerio.load(homePageBuffer);
-    const title = $(".category-links div a").text().trim();
-
-    return res.json({ isSuccess: true })
-});
 
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
