@@ -1,18 +1,28 @@
 const needle = require('needle');
 const fs = require('fs');
+const path = require('path')
 
-async function getRequest(url) {
+async function downloadHtmlFromUrl(fileName, url, p) {
     const result = await needle("get", url);
-    return result.body;
+    const html = result.body;
+    if(!p) {
+        fs.writeFileSync(`./templates/${fileName}`, html);
+    } else {
+        fs.writeFileSync(`./templates/${p}/${fileName}`, html);
+    }
 }
 
-function saveHtml(html) {
-    fs.writeFileSync(`./templates/template-${Date.now()}.html`, html);
+async function saveHtmlFromUrl(url, name, p) {
+    const result = await needle("get", url);
+    const html = result.body;
+    const pathFile = path.join(__dirname, `../templates/${p}/${name}`)
+    if(!fs.existsSync(pathFile))
+        fs.writeFileSync(pathFile, html)
+
+    return pathFile;
 }
 
-async function downloadHtmlFromUrl(url) {
-    const html = await getRequest(url);
-    await saveHtml(html);
-}
-
-module.exports = downloadHtmlFromUrl;
+module.exports = {
+    downloadHtmlFromUrl,
+    saveHtmlFromUrl
+};

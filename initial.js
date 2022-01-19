@@ -10,16 +10,19 @@ async function initData(list, model, field) {
         const docsCreated = await model.insertMany(newDocs);
 
         if (!docsCreated) {
-            throw new ApolloError('Init data sync failed!', '500');
+            throw new Error(`Init data sync failed`)
         }
     }
 }
 
 async function createSeedData() {
-    const categories = [{ title: 'Controls' }, { title: 'Pumps' }, { title: 'Filters' }, { title: 'Keypads' }];
-    await initData(categories, Category, 'title');
-    const homePageData = await parseHomePage();
-    await categoryController.bulkCreate(homePageData);
+    const categories = await categoryController.findAll();
+    if(!categories.length) {
+        const categories = [{ title: 'Controls' }, { title: 'Pumps' }, { title: 'Filters' }, { title: 'Keypads' }];
+        await initData(categories, Category, 'title');
+        const homePageData = await parseHomePage();
+        await categoryController.bulkCreate(homePageData);
+    }
 }
 
 module.exports = createSeedData;

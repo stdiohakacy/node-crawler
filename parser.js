@@ -3,7 +3,7 @@ const fs = require('fs');
 const cheerio = require('cheerio')
 
 async function parseHomePage() {
-    const homePageBuffer = fs.readFileSync('templates/template-1642493417352.html');
+    const homePageBuffer = fs.readFileSync('templates/template-homepage.html');
     const $ = cheerio.load(homePageBuffer);
     const categories = await categoryController.findAll();
     let categoriesHtml = [
@@ -20,7 +20,23 @@ async function parseHomePage() {
     })
     
     return subCateTitle;
-    
 }
 
-module.exports = parseHomePage;
+async function linkProductsPageByCategory(path, linkParent) {
+    const productPageBuffer = fs.readFileSync(path);
+    const $ = cheerio.load(productPageBuffer);
+
+    let links = $("a").map(
+        (idx, el) => $(el).attr("href")
+    ).get().filter(
+        link => link.startsWith(linkParent)
+    );
+    links = [...new Set(links)];
+
+    return links;
+}
+
+module.exports = {
+    parseHomePage,
+    linkProductsPageByCategory
+};

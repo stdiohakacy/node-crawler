@@ -1,0 +1,917 @@
+ <!doctype html><html lang="en"><head > <meta charset="utf-8"/><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"23cc8654ff",applicationID:"277857658"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return s.recordSupportability("API/"+e+"/called"),o(t+e,[u.now()].concat(c(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(10),c=t(11),f=t("ee").get("tracer"),u=t("loader"),s=t(4),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",v=l+"ixn-";a(p,function(t,e){d[e]=i(l,e,!0,"api")}),d.addPageAction=i(l,"addPageAction",!0),d.setCurrentRouteName=i(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(v+"tracer",[u.now(),t,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw f.emit("fn-err",[arguments,this,t],n),t}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(v,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),s.recordSupportability("API/noticeError/called"),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],4:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[c,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",c="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:c},recordSupportability:r,recordCustom:i}},{}],5:[function(t,e,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=t(12);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],6:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],7:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?p("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&p("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(f&&f<r.startTime)return;p("lcp",[r])}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||p("cls",[t])})}function a(t){if(t instanceof g&&!y){var e=Math.round(t.timeStamp),n={type:t.type};e<=l.now()?n.fid=l.now()-e:e>l.offset&&e<=Date.now()?(e-=l.offset,n.fid=l.now()-e):e=l.now(),y=!0,p("timing",["fi",e,n])}}function c(t){"hidden"===t&&(f=l.now(),p("pageHide",[f]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d,p=t("handle"),l=t("loader"),v=t(9),m=t(3),g=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){u=new PerformanceObserver(r);try{u.observe({entryTypes:["paint"]})}catch(h){}s=new PerformanceObserver(i);try{s.observe({entryTypes:["largest-contentful-paint"]})}catch(h){}d=new PerformanceObserver(o);try{d.observe({type:"layout-shift",buffered:!0})}catch(h){}}if("addEventListener"in document){var y=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(t){document.addEventListener(t,a,m(!1))})}v(c)}},{}],8:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}e.exports={agent:i,version:o,match:r}},{}],9:[function(t,e,n){function r(t){function e(){t(c&&document[c]?document[c]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(3);e.exports=r;var o,a,c;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",c="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",c="webkitVisibilityState")},{}],10:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],11:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],12:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var c=e(i),f=m(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[w[n]];return p&&p.push([b,n,r,c]),c}}function o(t,e){y[t]=m(t).concat(e)}function v(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:v,emit:n,get:g,listeners:m,context:e,buffer:h,abort:c,aborted:!1};return b}function o(t){return u(t,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=t("gos"),s=t(10),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!T++){var t=P.info=NREUM.info,e=g.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(O,function(e,n){t[e]||(t[e]=n)});var n=a();c("mark",["onload",n+P.offset],null,"api"),c("timing",["load",n]);var r=g.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=v+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===g.readyState&&o()}function o(){c("mark",["domContent",a()+P.offset],null,"api")}var a=t(5),c=t("handle"),f=t(10),u=t("ee"),s=t(8),d=t(6),p=t(2),l=t(3),v=p.getConfiguration("ssl")===!1?"http":"https",m=window,g=m.document,h="addEventListener",y="attachEvent",w=m.XMLHttpRequest,b=w&&w.prototype,E=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:w,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,O={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1212.min.js"},M=w&&b&&b[h]&&!/CriOS/.test(navigator.userAgent),P=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:M,userAgent:s,disabled:E};if(!E){t(1),t(7),g[h]?(g[h]("DOMContentLoaded",o,l(!1)),m[h]("load",r,l(!1))):(g[y]("onreadystatechange",i),m[y]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var T=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],t)}c(n+"start",[o,a,f],s,u);try{return p=e.apply(a,o)}catch(v){throw c(n+"err",[o,a,v],s,u),v}finally{c(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)f=e[u],c=t[f],a(c)||(t[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!v||e){var c=v;v=!0;try{t.emit(n,r,o,e,a)}catch(f){i([f,n,r,o],t)}v=c}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function c(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function f(t,e,n){var r=t[e];t[e]=c(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(11),p="nr@original",l=Object.prototype.hasOwnProperty,v=!1;e.exports=r,e.exports.wrapFunction=c,e.exports.wrapInPlace=f,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta name="description" content="We’re spa and hot tub owners’ coast to coast professional source of pumps
+from the industry top manufacturers."/>
+<meta name="keywords" content="Spa Parts & Spa Maintenance"/>
+<meta name="robots" content="NOINDEX, FOLLOW"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="google-site-verification" content="c8Pp-yQx12mMmqujq2STHR3TPeZcVINpyYZeFj7SHxI"/>
+<title></title>
+<link  rel="stylesheet" type="text/css"  media="all" href="https://www.spapartsproshop.com/static/version1639663301/_cache/merged/0464ecfdfc39956bbb9d05117d557244.min.css" />
+<link  rel="stylesheet" type="text/css"  media="print" href="https://www.spapartsproshop.com/static/version1639663301/frontend/bs_rubix/b2c/en_US/css/print.min.css" />
+<link  rel="stylesheet" type="text/css"  media="all" href="/build/allied/styles/catalog-layerednavigation.css?version1639663301" />
+
+<link  rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Red+Hat+Display:300,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,400,700" />
+<link  rel="icon" type="image/x-icon" href="https://www.spapartsproshop.com/media/favicon/stores/13/Favicon_SpaPartsProShop_logo_black.jpg" />
+<link  rel="shortcut icon" type="image/x-icon" href="https://www.spapartsproshop.com/media/favicon/stores/13/Favicon_SpaPartsProShop_logo_black.jpg" />
+<link  rel="canonical" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete" />
+<!-- Facebook Pixel Code -->
+
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=941513666432046&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<meta name="facebook-domain-verification" content="88bvt7ihpry6gxsx41kx4mdx3d7tkt" />
+<meta name="trustpilot-one-time-domain-verification-id" content="3f10f806-6424-4a24-8a1c-90aad1f7a54b"/>        <!-- GOOGLE TAG MANAGER --><!-- END GOOGLE TAG MANAGER -->  
+<meta property="og:type" content="product.group"/>
+<meta property="og:title" content="Complete"/>
+<meta property="og:description" content="We&#x2019;re&#x20;spa&#x20;and&#x20;hot&#x20;tub&#x20;owners&#x2019;&#x20;coast&#x20;to&#x20;coast&#x20;professional&#x20;source&#x20;of&#x20;pumps&#x0D;&#x0A;from&#x20;the&#x20;industry&#x20;top&#x20;manufacturers."/>
+<meta property="og:url" content="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete"/>
+<meta property="og:site_name" content="Spa Parts ProShop"/>
+<meta property="og:image" content="https://www.spapartsproshop.com/media/catalog/category/Banner_category_complete_systems.jpg"/>
+<meta property="og:image:width" content="1920"/>
+<meta property="og:image:height" content="335"/>
+
+</head><body data-container="body" data-mage-init='{"loaderAjax": {}, "loader": { "icon": "https://www.spapartsproshop.com/static/version1639663301/frontend/bs_rubix/b2c/en_US/images/loader-2.gif"}}' id="html-body" class="eren-page-preloader page-with-filter page-products categorypath-controls-spa-controls-electronic-complete category-complete page-layout-2columns-left catalog-category-view page-layout-category-full-width">   <!-- GOOGLE TAG MANAGER --><noscript>  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDBRFTX" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript><!-- END GOOGLE TAG MANAGER -->                  <noscript><div class="message global noscript"><div class="content"><p><strong>JavaScript seems to be disabled in your browser.</strong> <span> For the best experience on our site, be sure to turn on Javascript in your browser.</span></p></div></div></noscript>      <!-- GOOGLE TAG MANAGER --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDBRFTX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- END GOOGLE TAG MANAGER -->     <div class="off-canvas-wrapper"><div id="offCanvasPage" class="off-canvas-absolute position-left">  <div class="sections nav-mobile nav-sections"> <div class="section-items nav-mobile nav-sections-items" data-mage-init='{"tabs":{"openedState":"active"}}'>   <div class="section-item-content nav-mobile nav-sections-item-content" id="navsimple.store.links" data-role="content"><!-- Account links --></div></div></div></div><div class="off-canvas-content"><div class="page-wrapper off-canvas-wrapper"><div class="header-container"><!--<div class="header-top text-center"><div class="container-full"><div class="row"><div class="col-lg-4 hidden-md hidden-xs hidden-sm col-top-left"></div><div class="col-lg-4 col-md-12 col-top-center text-center"></div><div class="col-lg-4 hidden-md hidden-xs hidden-sm col-top-right">  <div class="social-link"></div></div></div></div></div>--><div class="header"><div class="container-message-banner"><div class="message-banner-section" data-content-type="row" data-appearance="full-width" data-enable-parallax="0" data-parallax-speed="0.5" data-background-images="{}" data-background-type="image" data-video-loop="true" data-video-play-only-visible="true" data-video-lazy-load="true" data-video-fallback-src="" data-element="main" data-pb-style="618CEF054A338"><div class="row-full-width-inner" data-element="inner"><div data-content-type="html" data-appearance="default" data-element="main" data-pb-style="618CEF054A34A" data-decoded="true"><div class="header-top text-center">
+    <div class="container-full">
+        <div class="row">
+            <div class="col-lg-6 col-top-center">
+                <p class="contact-email">
+                    <a href="https://spapartsproshop.squarespace.com/">Contact Us</a>
+                </p>
+            </div>
+            <div class="col-lg-6 col-top-center text-right">
+                <p class="mobile-text">Free shipping on orders of $99 or more.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div></div></div><style>#html-body [data-pb-style="618CEF054A338"]{justify-content: flex-start; display: flex; flex-direction: column; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px 10px;}#html-body [data-pb-style="618CEF054A34A"]{border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;}</style></div><div class="container-full"><div class="for-full-withmenu"><div class="col-logo"> <span data-action="toggle-nav" class="action nav-toggle"><span>Toggle Nav</span></span> <a class="logo" href="https://www.spapartsproshop.com/" title="Spa&#x20;Parts&#x20;ProShop" aria-label="store logo"><img src="https://www.spapartsproshop.com/media/logo/websites/13/SpaPartsProShop_logo_black.png" title="Spa&#x20;Parts&#x20;ProShop" alt="Spa&#x20;Parts&#x20;ProShop" width="250"  /></a></div>   <div class="sections custom-menu nav-sections"> <div id="close-menu" class="visible-xs"><a href="#"><i class="icon-x"></i></a></div><div class="section-items nav-sections-items" data-mage-init='{"tabs":{"openedState":"active"}}'>  <div class="section-item-title nav-sections-item-title" data-role="collapsible"><a class="nav-sections-item-switch" data-toggle="switch" href="#custom.topnav"></a></div><div class="section-item-content nav-sections-item-content" id="custom.topnav" data-role="content">    <nav class="navigation custommenu" role="navigation"><ul></ul></nav></div></div><div class="mobile-action"><div class="category-mobile-links"><ul><li><a class="level-top" href="https://www.spapartsproshop.com/" title="Home">Home</a></li> <li class="controls-category category-drop"><a class="level-top" title="Controls">Controls</a> <div class="open-children-toggle"></div><div><ul class="controls-sub-category"><li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete" title="Complete Systems">Complete Systems</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/parts/circuit-board" title="Circuit Boards">Circuit Boards</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/cables-parts/cords-receptacles" title="Cable, Cords & Receptacles">Cable, Cords & Receptacles</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/cables-parts/parts" title="Cable Parts">Cable Parts</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/parts/fuse-breaker" title="Fuses & Breakers">Fuses & Breakers</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/accessories-internet" title="Internet Gateways">Internet Gateways</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/sensor/low-voltage" title="Low Voltage Sensors">Low Voltage Sensors</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/parts/pressure-vacuum-switch" title="Pressure Switches">Pressure Switches</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/parts/transformer" title="Transformers">Transformers</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/parts/others" title="Others">Others</a></li></ul></div></li> <li class="pumps-category category-drop"><a class="level-top" title="Pumps">Pumps</a> <div class="open-children-toggle"></div><div><ul class="pumps-sub-category"><li> <a class="level-one" href="https://www.spapartsproshop.com/pumps-blowers/pumps/complete/massage" title="Massage">Massage</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/pumps-blowers/pumps/complete/circulating" title="Circulating">Circulating</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/pumps-blowers/pumps/parts" title="Parts">Parts</a></li></ul></div></li> <li class="filters-category"><a class="level-top">Filters</a> <div class="open-children-toggle"></div><div><ul class="filters-sub-category"><li> <a class="level-one" href="https://www.spapartsproshop.com/spa-and-water-maintenance/filters/cartridge" title="Cartridges">Cartridges</a></li></ul></div></li> <li class="spa-controls-category"><a class="level-top">Keypads</a> <div class="open-children-toggle"></div><div><ul class="spa-controls-sub-category"><li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/keypads" title="Keypads">Keypads</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/parts/keypad-overlays-gaskets" title="Keypad overlays & gaskets">Keypad overlays & gaskets</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/parts/keypad-adapter-plates" title="Keypad Adapter Plates">Keypad Adapter Plates</a></li></ul></div></li> <li class="heaters-category"><a class="level-top" title="Heaters">Heaters</a> <div class="open-children-toggle"></div><div><ul class="heaters-sub-category"><li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/heater/complete" title="Heaters Complete">Heaters Complete</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/heater/element" title="Heaters Elements">Heaters Elements</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/heater/housing" title="Heaters Housing">Heaters Housing</a></li> <li> <a class="level-one" href="https://www.spapartsproshop.com/controls/spa-controls/heater/gaskets-o-rings" title="Heaters Gaskets & O’Ring">Heaters Gaskets & O’Ring</a></li></ul></div></li></ul></div><div class="register-login visible-xs"> <a href="https://www.spapartsproshop.com/customer/account/login/" title="Log in">Log in <i class="icon-user icons"></i></a> </div><div class="wishlist visible-xs"><a href="https://www.spapartsproshop.com/wishlist" title="Wishlist">Wishlist <i class="icon-heart icons"></i></a></div><div class="compare visible-xs"><a href="https://www.spapartsproshop.com/catalog/product_compare/" title="Comparelist">Comparelist<i class="icon-equalizer icons"></i></a></div><div class="blog-mobile-links"><ul><li class="blog-links"><a class="blog-level-top" title="Blog">Blog</a> <div><ul class="blog-sub-links"><li> <a class="blog-level-one" href="https://www.spapartsproshop.com/blog-on-spa-controls" title="All about Spa Controls">All about Spa Controls</a></li> <li> <a class="blog-level-one" href="https://www.spapartsproshop.com/blog-on-pumps" title="All about pumps">All about pumps</a></li> <li> <a class="blog-level-one" href="https://www.spapartsproshop.com/troubleshooting-tips" title="Pump TroubleShooting">Pump TroubleShooting</a></li> <li> <a class="blog-level-one" href="https://www.spapartsproshop.com/blog-filter-cartridge-selection" title="All about filter cartridges">All about filter cartridges</a></li> <li> <a class="blog-level-one" href="https://www.spapartsproshop.com/blog-filter-cartridge-cleaning-replacing" title="How to replace a cartridge">How to replace a cartridge</a></li> <li> <a class="blog-level-one" href="https://www.spapartsproshop.com/blog-on-keypads" title="All about keypads">All about keypads</a></li> <li> <a class="blog-level-one" href="https://www.spapartsproshop.com/blog-on-overlays" title="All about overlays">All about overlays</a></li> <li> <a class="blog-level-one" href="https://www.spapartsproshop.com/blog-on-heaters" title="All about heaters">All about heaters</a></li></ul></div></li></ul></div><div class="glossary-mobile-links"><ul><li class="glossary-links"><a class="blog-level-top" title="Glossaries">Glossaries</a> <div><ul class="glossary-sub-links"><li> <a href="https://www.spapartsproshop.com/pump-glossary" title="Pumps technical terms">Pumps technical terms</a></li> <li> <a href="https://www.spapartsproshop.com/filter-cartridge-glossary" title="Filter cartridges technical terms">Filter cartridges technical terms</a></li> <li> <a href="https://www.spapartsproshop.com/keypad-glossary" title="Keypad technical terms">Keypad technical terms</a></li> <li> <a href="https://www.spapartsproshop.com/heater-glossary" title="Spa Heaters technical terms">Spa Heaters technical terms</a></li></ul></div></li></ul></div></div></div>  <div class="actions-header"> <div class="block block-search"><div class="block block-content"><div class="dropdown"><div class="dropdown-toggle"><div class="top-search fixed-click-show-destop"><i class="icon-magnifier icons"></i></div></div><form class="form minisearch search-content minisearchshow-destop dropdown-menu" id="search_mini_form" action="https://www.spapartsproshop.com/catalogsearch/result/" method="get"> <div class="field search"><label class="label" for="search" data-role="minisearch-label"><span>Search</span></label> <div class="control"><input id="search-input-autocomplate" data-mage-init='{"quickSearch":{ "formSelector":"#search_mini_form", "url":"https://www.spapartsproshop.com/search/ajax/suggest/", "destinationSelector":"#search_autocomplete"} }' type="text" name="q" value="" placeholder="Search entire store here..." class="input-text" maxlength="50" role="combobox" aria-haspopup="false" aria-autocomplete="both" aria-expanded="false" autocomplete="off" /><div id="search_autocomplete" class="search-autocomplete"></div><div data-bind="scope: 'searchsuiteautocomplete_form'"><!-- ko template: getTemplate() --><!-- /ko --></div></div></div><div class="actions"><button type="submit" title="Search" class="action search"><span>Search</span></button></div></form></div></div></div><!---->  <span class="sperator hidden-sm hidden-xs">|</span> <div class="wishlist hidden-sm hidden-xs"><a href="https://www.spapartsproshop.com/wishlist/" title="Wishlist"><i class="icon-heart icons"></i></a></div><span class="sperator hidden-sm hidden-xs">|</span>  <div data-block="minicart" class="minicart-wrapper"><a class="action showcart" href="https://www.spapartsproshop.com/checkout/cart/" data-bind="scope: 'minicart_content'"><span class="icon-cart-header"><img src='https://www.spapartsproshop.com/media/b2c_images/Shopping_cart_icon.png' alt="cart"><span class="text">Cart</span></span> <span class="counter qty empty" data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading"><span class="counter-number"><!-- ko text: getCartParam('summary_count') --><!-- ko text: getCartParam('summary_count') --><!-- /ko --><!-- /ko --></span> <span class="counter-label"><!-- ko if: getCartParam('summary_count') --><!-- ko text: getCartParam('summary_count') --><!-- /ko --><!-- ko i18n: 'items' --><!-- /ko --><!-- /ko --></span></span></a>  <div class="block block-minicart empty" data-role="dropdownDialog" data-mage-init='{"dropdownDialog":{ "appendTo":"[data-block=minicart]", "triggerTarget":".showcart", "timeout": "2000", "closeOnMouseLeave": true, "closeOnEscape": true, "triggerClass":"active", "parentClass":"active", "buttons":[]}}'><div id="minicart-content-wrapper" data-bind="scope: 'minicart_content'"><!-- ko template: getTemplate() --><!-- /ko --></div></div> </div> <span class="sperator hidden-sm hidden-xs">|</span> <div class="register-login hidden-xs"> <a href="https://www.spapartsproshop.com/customer/account/login/"><i class="icon-user icons" title="Login"></i>Login</a> <a href="https://www.spapartsproshop.com/customer/account/create/" title="New Account"> / New Account</a> </div></div></div><div class="category-links"><a class="level-top" href="https://www.spapartsproshop.com/" title="Home">Home</a> <div class="controls-category dropdown"><a class="dropbtn level-top" title="Controls">Controls</a> <div class="controls-sub-category dropdown-content" id="myDropdown"><a href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete" title="Complete Systems">Complete Systems</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/parts/circuit-board" title="Circuit Boards">Circuit Boards</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/cables-parts/cords-receptacles" title="Cable, Cords & Receptacles">Cable, Cords & Receptacles</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/cables-parts/parts" title="Cable Parts">Cable Parts</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/parts/fuse-breaker" title="Fuses & Breakers">Fuses & Breakers</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/electronic/accessories-internet" title="Internet Gateways">Internet Gateways</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/sensor/low-voltage" title="Low Voltage Sensors">Low Voltage Sensors</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/parts/pressure-vacuum-switch" title="Pressure Switches">Pressure Switches</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/parts/transformer" title="Transformers">Transformers</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/parts/others" title="Others">Others</a></div></div><div class="pumps-category dropdown"><a class="dropbtn level-top" title="Pumps">Pumps</a> <div class="pumps-sub-category dropdown-content" id="myDropdown"><a href="https://www.spapartsproshop.com/pumps-blowers/pumps/complete/massage" title="Massage">Massage</a> <a href="https://www.spapartsproshop.com/pumps-blowers/pumps/complete/circulating" title="Circulating">Circulating</a> <a href="https://www.spapartsproshop.com/pumps-blowers/pumps/parts" title="Parts">Parts</a></div></div><div class="filters-category filters-dropdown"><a class="filters-dropbtn level-top" title="Filters">Filters</a> <div class="filters-sub-category filters-dropdown-content" id="filters-dropdown"><a href="https://www.spapartsproshop.com/spa-and-water-maintenance/filters/cartridge" title="Cartridges">Cartridges</a></div></div><div class="spa-controls-category spa-controls-dropdown"><a class="spa-controls-dropbtn level-top" title="Keypads">Keypads</a> <div class="spa-controls-sub-category spa-controls-dropdown-content" id="spa-controls-dropdown"><a href="https://www.spapartsproshop.com/controls/spa-controls/electronic/keypads" title="Keypads">Keypads</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/parts/keypad-overlays-gaskets" title="Keypad overlays & gaskets">Keypad overlays & gaskets</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/parts/keypad-adapter-plates" title="Keypad Adapter Plates">Keypad Adapter Plates</a></div></div><div class="heaters-category heaters-dropdown"><a class="heaters-dropbtn level-top" title="Heaters">Heaters</a> <div class="heaters-sub-category heaters-dropdown-content" id="heaters-dropdown"><a href="https://www.spapartsproshop.com/controls/spa-controls/heater/complete" title="Heaters Complete">Heaters Complete</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/heater/element" title="Heaters Elements">Heaters Elements</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/heater/housing" title="Heaters Housing">Heaters Housing</a> <a href="https://www.spapartsproshop.com/controls/spa-controls/heater/gaskets-o-rings" title="Heaters Gaskets & O’Ring">Heaters Gaskets & O’Ring</a></div></div><div class="blog-links"><a class="blog-dropbtn level-top" title="Blog">Blog</a> <div class="blog-sub-links blog-dropdown-content" id="blog-dropdown"><a href="https://www.spapartsproshop.com/blog-on-spa-controls" title="All about Spa Controls">All about Spa Controls</a> <a href="https://www.spapartsproshop.com/blog-on-pumps" title="All about pumps">All about pumps</a> <a href="https://www.spapartsproshop.com/troubleshooting-tips" title="Pump TroubleShooting">Pump TroubleShooting</a> <a href="https://www.spapartsproshop.com/blog-filter-cartridge-selection" title="All about filter cartridges">All about filter cartridges</a> <a href="https://www.spapartsproshop.com/blog-filter-cartridge-cleaning-replacing" title="How to replace a cartridge">How to replace a cartridge</a> <a href="https://www.spapartsproshop.com/blog-on-keypads" title="All about keypads">All about keypads</a> <a href="https://www.spapartsproshop.com/blog-on-overlays" title="All about overlays">All about overlays</a> <a href="https://www.spapartsproshop.com/blog-on-heaters" title="All about heaters">All about heaters</a></div></div><div class="glossary-links"><a class="glossary-dropbtn level-top" title="Glossaries">Glossaries</a> <div class="glossary-sub-links glossary-dropdown-content" id="glossary-dropdown"><a href="https://www.spapartsproshop.com/pump-glossary" title="Pumps technical terms">Pumps technical terms</a> <a href="https://www.spapartsproshop.com/filter-cartridge-glossary" title="Filter cartridges technical terms">Filter cartridges technical terms</a> <a href="https://www.spapartsproshop.com/keypad-glossary" title="Keypad technical terms">Keypad technical terms</a> <a href="https://www.spapartsproshop.com/heater-glossary" title="Spa Heaters technical terms">Spa Heaters technical terms</a></div></div></div></div><div class="mobile-search-icon"><i class="icon-magnifier icons"></i></div></div></div><div class="category-top"><div class="category-view"><div class="page-main">  <div class="category-image"><img src="/media/catalog/category/Banner_category_complete_systems.jpg" alt="Complete" title="Complete" class="image" /></div></div><div>  </div><div class="page-main">  </div></div></div><div class="top-container">  </div><div class="page-main">  <div class="page-title-wrapper"><h1 class="page-title"  id="page-title-heading"   aria-labelledby="page-title-heading&#x20;toolbar-amount" ><span class="base" data-ui-id="page-title-wrapper" >Complete</span></h1>  <style type="text/css"> .shipping-title span { background: #0375a8; color: #fff; padding: 5px 10px; border-radius: 10px; } .checkout-cart-index .page-title-wrapper .page-title { margin-bottom: 25px; }</style> </div><div class="page messages"> <div data-placeholder="messages"></div> <div data-bind="scope: 'messages'"><!-- ko if: cookieMessages && cookieMessages.length > 0 --><div aria-atomic="true" role="alert" data-bind="foreach: { data: cookieMessages, as: 'message' }" class="messages"><div data-bind="attr: { class: 'message-' + message.type + ' ' + message.type + ' message', 'data-ui-id': 'message-' + message.type }"><div data-bind="html: $parent.prepareMessageForHtml(message.text)"></div></div></div><!-- /ko --><!-- ko if: messages().messages && messages().messages.length > 0 --><div aria-atomic="true" role="alert" class="messages" data-bind="foreach: { data: messages().messages, as: 'message' }"><div data-bind="attr: { class: 'message-' + message.type + ' ' + message.type + ' message', 'data-ui-id': 'message-' + message.type }"><div data-bind="html: $parent.prepareMessageForHtml(message.text)"></div></div></div><!-- /ko --></div></div></div><main id="maincontent" class="page-main container"> <a id="contentarea" tabindex="-1"></a><div class="columns off-canvas-content"><div class="col-main column main col-lg-9 col-md-9 col-sm-9 col-xs-12"><input name="form_key" type="hidden" value="K9mLWKcxzdtdLyS1" /> <div id="authenticationPopup" data-bind="scope:'authenticationPopup', style: {display: 'none'}">  <!-- ko template: getTemplate() --><!-- /ko --></div>        <div id="layered-ajax-list-products"><div id="amasty-shopby-product-list">    <div class="container-catalog-products-common"> <div class="toolbar-html-container-top check-view-mode-toolbar-grid" data-mode="grid">   <div class="toolbar toolbar-products" data-mage-init='{"productListToolbarForm":{"mode":"product_list_mode","direction":"product_list_dir","order":"product_list_order","limit":"product_list_limit","modeDefault":"grid","directionDefault":"asc","orderDefault":"position","limitDefault":12,"url":"https:\/\/www.spapartsproshop.com\/controls\/spa-controls\/electronic\/complete?side_included=22708","formKey":"K9mLWKcxzdtdLyS1","post":false}}'>    <div class="modes">  <strong class="modes-label" id="modes-label">Hide Sidebar</strong>   <strong title="Grid" class="modes-mode active mode-grid" data-value="grid"><span>Grid</span></strong>    <a class="modes-mode mode-list" title="List" href="#" data-role="mode-switcher" data-value="list" id="mode-list" aria-labelledby="modes-label mode-list"><span>List</span></a>   </div>    <p class="toolbar-amount" id="toolbar-amount"> <span class="toolbar-number">5</span> Items </p>         <div class="grid-mode-show-type-products"><a href="#" class="grid-mode-2" data-grid-mode="2">2</a> <a href="#" class="grid-mode-3 actived" data-grid-mode="3">3</a> <a href="#" class="grid-mode-4" data-grid-mode="4">4</a> <!-- <a href="#" class="grid-mode-5" data-grid-mode="5">5</a> --></div><button class="mobile-filters">Show Filters</button>   <div class="field limiter"><div class="control"><select id="limiter" data-role="limiter" class="limiter-options"> <option value="12" selected="selected">12</option> <option value="24">24</option> <option value="48">48</option></select></div></div>    <div class="toolbar-sorter sorter"><select id="sorter" data-role="sorter" class="sorter-options"> <option value="most_viewed"  >Most Viewed</option> <option value="price_asc"  >Price: low to high</option> <option value="price_desc"  >Price: high to low</option> <option value="name"  >Name</option> <option value="position"  selected="selected"  >Recommended</option></select> <!--  <a title="" href="#" class="action sorter-action sort-desc" data-role="direction-switcher" data-value="asc"><span></span></a>  <a title="" href="#" class="action sorter-action sort-asc" data-role="direction-switcher" data-value="desc"><span></span></a>  --></div> </div></div>  <div class="products wrapper grid products-grid"> <div class="row"><ol class="container-products-switch products list items product-items category_page_grid_3" data-view-mode="3">  <li class="item product product-item"> <div class="product-item-info" data-container="product-grid"><div class="item-inner">  <div class="product-photo"><a href="https://www.spapartsproshop.com/bp7-control-system-bundle-g6405" class="product photo product-item-photo" tabindex="-1"> <span class="image0 image-switch">  <span class="product-image-container product-image-container-144548"><span class="product-image-wrapper"><img class="product-image-photo"  src="https://www.spapartsproshop.com/media/catalog/product/o/l/old_g6405_tbnl-83.jpg?quality=80&amp;bg-color=255,255,255&amp;fit=bounds&amp;height=520&amp;width=520&amp;canvas=520:520" loading="lazy" width="520" height="520" alt="BP7&#x20;Control&#x20;System&#x20;Bundle&#x20;230V&#x20;Only,&#x20;4.0kW,&#x20;w&#x2F;TP500&#x20;Topside"/></span></span>  <style>.product-image-container-144548 {
+    width: 520px;
+}
+.product-image-container-144548 span.product-image-wrapper {
+    padding-bottom: 100%;
+}</style> </span> <span class="image1 image-switch">  <span class="product-image-container product-image-container-144548"><span class="product-image-wrapper"><img class="product-image-photo"  src="https://www.spapartsproshop.com/media/catalog/product/o/l/old_g6405_tbnl-83.jpg?quality=80&amp;bg-color=255,255,255&amp;fit=bounds&amp;height=520&amp;width=520&amp;canvas=520:520" loading="lazy" width="520" height="520" alt="BP7&#x20;Control&#x20;System&#x20;Bundle&#x20;230V&#x20;Only,&#x20;4.0kW,&#x20;w&#x2F;TP500&#x20;Topside"/></span></span>  <style>.product-image-container-144548 {
+    width: 520px;
+}
+.product-image-container-144548 span.product-image-wrapper {
+    padding-bottom: 100%;
+}</style> </span></a> <span class="product-item-qty-green"></span>  <div class="addto-links-icons visible-onhover"><div class="action-inner"><ul class="add-to-links"><li>  <a href="#" class="action towishlist" title="Add to Wish List" aria-label="Add to Wish List" data-post='{"action":"https:\/\/www.spapartsproshop.com\/wishlist\/index\/add\/","data":{"product":144548,"uenc":"aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4"}}' data-action="add-to-wishlist" role="button"><i class="icon-heart icons"></i></a> </li> <li>  <a href="#" class="action tocompare" title="Add to Compare" aria-label="Add to Compare" data-post='{"action":"https:\/\/www.spapartsproshop.com\/catalog\/product_compare\/add\/","data":{"product":"144548","uenc":"aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4"}}' role="button"><i class="icon-equalizer icons"></i></a></li>  <li class="quickview-product"><a href="javascript:void(0)" data-role="quickview-button" data-id="144548" data-href="https://www.spapartsproshop.com/quickview/product/quickview/id/144548/" title="Quick view" class="ajax diamond tooltip-hover" data-placement="top" data-original-title="Quick view"><i class="icon-eye icons"></i> </a></li> </ul></div></div><div class="addto-links-bottom"><ul class="add-to-links"><li> <div class="actions-add-cart"><div class="product actions product-item-actions action-inner"><div class="actions-primary">  <form data-role="tocart-form" data-product-sku="G6405" action="https://www.spapartsproshop.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4/product/144548/" method="post"><input type="hidden" name="product" value="144548"><input type="hidden" name="uenc" value="aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jaGVja291dC9jYXJ0L2FkZC91ZW5jL2FIUjBjSE02THk5M2QzY3VjM0JoY0dGeWRITndjbTl6YUc5d0xtTnZiUzlqYjI1MGNtOXNjeTl6Y0dFdFkyOXVkSEp2YkhNdlpXeGxZM1J5YjI1cFl5OWpiMjF3YkdWMFpUOXphV1JsWDJsdVkyeDFaR1ZrUFRJeU56QTQvcHJvZHVjdC8xNDQ1NDgv"><input name="form_key" type="hidden" value="K9mLWKcxzdtdLyS1" /> <button type="submit" title="Add to Cart" class="action tocart primary">Add to Cart</button></form></div></div></div></li></ul></div> <div class="product-label">  </div></div><div class="product-info"><div class="product details product-item-details">  <strong class="product name product-item-name xxx"><a class="product-item-link" href="https://www.spapartsproshop.com/bp7-control-system-bundle-g6405">BP7 Control System Bundle</a></strong> <div>230V Only, 4.0kW, w/TP500 Topside</div><div>G6405</div>  <div class="price-box price-final_price" data-role="priceBox" data-product-id="144548" data-price-box="product-id-144548">    <span class="price-container price-final_price tax weee" > <span  id="product-price-144548"  data-price-amount="561.99" data-price-type="finalPrice" class="price-wrapper " ><span class="price">$561.99</span></span>    </span>  </div>    <div class="amshopby-option-link brand"><strong>Brand:</strong> <a href="https://www.spapartsproshop.com/brands/balboa"><div class="amshopby-brand-label" >Balboa</div></a></div>   </div></div></div></div>  </li><li class="item product product-item"> <div class="product-item-info" data-container="product-grid"><div class="item-inner">  <div class="product-photo"><a href="https://www.spapartsproshop.com/bp7-control-system-bundle-g6406" class="product photo product-item-photo" tabindex="-1"> <span class="image0 image-switch">  <span class="product-image-container product-image-container-144551"><span class="product-image-wrapper"><img class="product-image-photo"  src="https://www.spapartsproshop.com/media/catalog/product/o/l/old_g6406_tbnl-83.jpg?quality=80&amp;bg-color=255,255,255&amp;fit=bounds&amp;height=520&amp;width=520&amp;canvas=520:520" loading="lazy" width="520" height="520" alt="BP7&#x20;Control&#x20;System&#x20;Bundle&#x20;230V&#x20;Only,&#x20;4.0kW,&#x20;w&#x2F;TP600&#x20;Topside"/></span></span>  <style>.product-image-container-144551 {
+    width: 520px;
+}
+.product-image-container-144551 span.product-image-wrapper {
+    padding-bottom: 100%;
+}</style> </span> <span class="image1 image-switch">  <span class="product-image-container product-image-container-144551"><span class="product-image-wrapper"><img class="product-image-photo"  src="https://www.spapartsproshop.com/media/catalog/product/o/l/old_g6406_tbnl-83.jpg?quality=80&amp;bg-color=255,255,255&amp;fit=bounds&amp;height=520&amp;width=520&amp;canvas=520:520" loading="lazy" width="520" height="520" alt="BP7&#x20;Control&#x20;System&#x20;Bundle&#x20;230V&#x20;Only,&#x20;4.0kW,&#x20;w&#x2F;TP600&#x20;Topside"/></span></span>  <style>.product-image-container-144551 {
+    width: 520px;
+}
+.product-image-container-144551 span.product-image-wrapper {
+    padding-bottom: 100%;
+}</style> </span></a> <span class="product-item-qty-green"></span>  <div class="addto-links-icons visible-onhover"><div class="action-inner"><ul class="add-to-links"><li>  <a href="#" class="action towishlist" title="Add to Wish List" aria-label="Add to Wish List" data-post='{"action":"https:\/\/www.spapartsproshop.com\/wishlist\/index\/add\/","data":{"product":144551,"uenc":"aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4"}}' data-action="add-to-wishlist" role="button"><i class="icon-heart icons"></i></a> </li> <li>  <a href="#" class="action tocompare" title="Add to Compare" aria-label="Add to Compare" data-post='{"action":"https:\/\/www.spapartsproshop.com\/catalog\/product_compare\/add\/","data":{"product":"144551","uenc":"aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4"}}' role="button"><i class="icon-equalizer icons"></i></a></li>  <li class="quickview-product"><a href="javascript:void(0)" data-role="quickview-button" data-id="144551" data-href="https://www.spapartsproshop.com/quickview/product/quickview/id/144551/" title="Quick view" class="ajax diamond tooltip-hover" data-placement="top" data-original-title="Quick view"><i class="icon-eye icons"></i> </a></li> </ul></div></div><div class="addto-links-bottom"><ul class="add-to-links"><li> <div class="actions-add-cart"><div class="product actions product-item-actions action-inner"><div class="actions-primary">  <form data-role="tocart-form" data-product-sku="G6406" action="https://www.spapartsproshop.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4/product/144551/" method="post"><input type="hidden" name="product" value="144551"><input type="hidden" name="uenc" value="aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jaGVja291dC9jYXJ0L2FkZC91ZW5jL2FIUjBjSE02THk5M2QzY3VjM0JoY0dGeWRITndjbTl6YUc5d0xtTnZiUzlqYjI1MGNtOXNjeTl6Y0dFdFkyOXVkSEp2YkhNdlpXeGxZM1J5YjI1cFl5OWpiMjF3YkdWMFpUOXphV1JsWDJsdVkyeDFaR1ZrUFRJeU56QTQvcHJvZHVjdC8xNDQ1NTEv"><input name="form_key" type="hidden" value="K9mLWKcxzdtdLyS1" /> <button type="submit" title="Add to Cart" class="action tocart primary">Add to Cart</button></form></div></div></div></li></ul></div> <div class="product-label">  </div></div><div class="product-info"><div class="product details product-item-details">  <strong class="product name product-item-name xxx"><a class="product-item-link" href="https://www.spapartsproshop.com/bp7-control-system-bundle-g6406">BP7 Control System Bundle</a></strong> <div>230V Only, 4.0kW, w/TP600 Topside</div><div>G6406</div>  <div class="price-box price-final_price" data-role="priceBox" data-product-id="144551" data-price-box="product-id-144551">    <span class="price-container price-final_price tax weee" > <span  id="product-price-144551"  data-price-amount="565.49" data-price-type="finalPrice" class="price-wrapper " ><span class="price">$565.49</span></span>    </span>  </div>    <div class="amshopby-option-link brand"><strong>Brand:</strong> <a href="https://www.spapartsproshop.com/brands/balboa"><div class="amshopby-brand-label" >Balboa</div></a></div>   </div></div></div></div>  </li><li class="item product product-item"> <div class="product-item-info" data-container="product-grid"><div class="item-inner">  <div class="product-photo"><a href="https://www.spapartsproshop.com/in-ye-electronic-control-system-0610-300004" class="product photo product-item-photo" tabindex="-1"> <span class="image0 image-switch">  <span class="product-image-container product-image-container-147233"><span class="product-image-wrapper"><img class="product-image-photo"  src="https://www.spapartsproshop.com/media/catalog/product/b/e/bea_0610-300004_spa-control-electronic-complete-gecko-in.ye-25.jpg?quality=80&amp;bg-color=255,255,255&amp;fit=bounds&amp;height=520&amp;width=520&amp;canvas=520:520" loading="lazy" width="520" height="520" alt="in.ye&#x20;Electronic&#x20;Control&#x20;System&#x20;115&#x2F;230V,&#x20;1.0&#x2F;4.0kW,&#x20;Pump1,&#x20;Blower&#x20;or&#x20;Pump2"/></span></span>  <style>.product-image-container-147233 {
+    width: 520px;
+}
+.product-image-container-147233 span.product-image-wrapper {
+    padding-bottom: 100%;
+}</style> </span> <span class="image1 image-switch">  <span class="product-image-container product-image-container-147233"><span class="product-image-wrapper"><img class="product-image-photo"  src="https://www.spapartsproshop.com/media/catalog/product/b/e/bea_0610-300004_spa-control-electronic-complete-gecko-in.ye-25.jpg?quality=80&amp;bg-color=255,255,255&amp;fit=bounds&amp;height=520&amp;width=520&amp;canvas=520:520" loading="lazy" width="520" height="520" alt="in.ye&#x20;Electronic&#x20;Control&#x20;System&#x20;115&#x2F;230V,&#x20;1.0&#x2F;4.0kW,&#x20;Pump1,&#x20;Blower&#x20;or&#x20;Pump2"/></span></span>  <style>.product-image-container-147233 {
+    width: 520px;
+}
+.product-image-container-147233 span.product-image-wrapper {
+    padding-bottom: 100%;
+}</style> </span></a> <span class="product-item-qty-green"></span>  <div class="addto-links-icons visible-onhover"><div class="action-inner"><ul class="add-to-links"><li>  <a href="#" class="action towishlist" title="Add to Wish List" aria-label="Add to Wish List" data-post='{"action":"https:\/\/www.spapartsproshop.com\/wishlist\/index\/add\/","data":{"product":147233,"uenc":"aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4"}}' data-action="add-to-wishlist" role="button"><i class="icon-heart icons"></i></a> </li> <li>  <a href="#" class="action tocompare" title="Add to Compare" aria-label="Add to Compare" data-post='{"action":"https:\/\/www.spapartsproshop.com\/catalog\/product_compare\/add\/","data":{"product":"147233","uenc":"aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4"}}' role="button"><i class="icon-equalizer icons"></i></a></li>  <li class="quickview-product"><a href="javascript:void(0)" data-role="quickview-button" data-id="147233" data-href="https://www.spapartsproshop.com/quickview/product/quickview/id/147233/" title="Quick view" class="ajax diamond tooltip-hover" data-placement="top" data-original-title="Quick view"><i class="icon-eye icons"></i> </a></li> </ul></div></div><div class="addto-links-bottom"><ul class="add-to-links"><li> <div class="actions-add-cart"><div class="product actions product-item-actions action-inner"><div class="actions-primary">  <form data-role="tocart-form" data-product-sku="0610-300004" action="https://www.spapartsproshop.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4/product/147233/" method="post"><input type="hidden" name="product" value="147233"><input type="hidden" name="uenc" value="aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jaGVja291dC9jYXJ0L2FkZC91ZW5jL2FIUjBjSE02THk5M2QzY3VjM0JoY0dGeWRITndjbTl6YUc5d0xtTnZiUzlqYjI1MGNtOXNjeTl6Y0dFdFkyOXVkSEp2YkhNdlpXeGxZM1J5YjI1cFl5OWpiMjF3YkdWMFpUOXphV1JsWDJsdVkyeDFaR1ZrUFRJeU56QTQvcHJvZHVjdC8xNDcyMzMv"><input name="form_key" type="hidden" value="K9mLWKcxzdtdLyS1" /> <button type="submit" title="Add to Cart" class="action tocart primary">Add to Cart</button></form></div></div></div></li></ul></div> <div class="product-label">  </div></div><div class="product-info"><div class="product details product-item-details">  <strong class="product name product-item-name xxx"><a class="product-item-link" href="https://www.spapartsproshop.com/in-ye-electronic-control-system-0610-300004">in.ye Electronic Control System</a></strong> <div>115/230V, 1.0/4.0kW, Pump1, Blower or Pump2</div><div>0610-300004</div>  <div class="price-box price-final_price" data-role="priceBox" data-product-id="147233" data-price-box="product-id-147233">    <span class="price-container price-final_price tax weee" > <span  id="product-price-147233"  data-price-amount="532.49" data-price-type="finalPrice" class="price-wrapper " ><span class="price">$532.49</span></span>    </span>  </div>    <div class="amshopby-option-link brand"><strong>Brand:</strong> <a href="https://www.spapartsproshop.com/brands/gecko-alliance"><div class="amshopby-brand-label" >Gecko Alliance</div></a></div>   </div></div></div></div>  </li><li class="item product product-item"> <div class="product-item-info" data-container="product-grid"><div class="item-inner">  <div class="product-photo"><a href="https://www.spapartsproshop.com/in-ye-electronic-control-system-0610-300003" class="product photo product-item-photo" tabindex="-1"> <span class="image0 image-switch">  <span class="product-image-container product-image-container-147257"><span class="product-image-wrapper"><img class="product-image-photo"  src="https://www.spapartsproshop.com/media/catalog/product/b/e/bea_0610-300003_spa.jpg?quality=80&amp;bg-color=255,255,255&amp;fit=bounds&amp;height=520&amp;width=520&amp;canvas=520:520" loading="lazy" width="520" height="520" alt="in.ye&#x20;Electronic&#x20;Control&#x20;System&#x20;240V,&#x20;4.0kW,&#x20;2&#x20;Pumps,&#x20;Blower&#x20;or&#x20;Pump3"/></span></span>  <style>.product-image-container-147257 {
+    width: 520px;
+}
+.product-image-container-147257 span.product-image-wrapper {
+    padding-bottom: 100%;
+}</style> </span> <span class="image1 image-switch">  <span class="product-image-container product-image-container-147257"><span class="product-image-wrapper"><img class="product-image-photo"  src="https://www.spapartsproshop.com/media/catalog/product/b/e/bea_0610-300003_spa.jpg?quality=80&amp;bg-color=255,255,255&amp;fit=bounds&amp;height=520&amp;width=520&amp;canvas=520:520" loading="lazy" width="520" height="520" alt="in.ye&#x20;Electronic&#x20;Control&#x20;System&#x20;240V,&#x20;4.0kW,&#x20;2&#x20;Pumps,&#x20;Blower&#x20;or&#x20;Pump3"/></span></span>  <style>.product-image-container-147257 {
+    width: 520px;
+}
+.product-image-container-147257 span.product-image-wrapper {
+    padding-bottom: 100%;
+}</style> </span></a> <span class="product-item-qty-yellow"></span>  <div class="addto-links-icons visible-onhover"><div class="action-inner"><ul class="add-to-links"><li>  <a href="#" class="action towishlist" title="Add to Wish List" aria-label="Add to Wish List" data-post='{"action":"https:\/\/www.spapartsproshop.com\/wishlist\/index\/add\/","data":{"product":147257,"uenc":"aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4"}}' data-action="add-to-wishlist" role="button"><i class="icon-heart icons"></i></a> </li> <li>  <a href="#" class="action tocompare" title="Add to Compare" aria-label="Add to Compare" data-post='{"action":"https:\/\/www.spapartsproshop.com\/catalog\/product_compare\/add\/","data":{"product":"147257","uenc":"aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4"}}' role="button"><i class="icon-equalizer icons"></i></a></li>  <li class="quickview-product"><a href="javascript:void(0)" data-role="quickview-button" data-id="147257" data-href="https://www.spapartsproshop.com/quickview/product/quickview/id/147257/" title="Quick view" class="ajax diamond tooltip-hover" data-placement="top" data-original-title="Quick view"><i class="icon-eye icons"></i> </a></li> </ul></div></div><div class="addto-links-bottom"><ul class="add-to-links"><li> <div class="actions-add-cart"><div class="product actions product-item-actions action-inner"><div class="actions-primary">  <form data-role="tocart-form" data-product-sku="0610-300003" action="https://www.spapartsproshop.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4/product/147257/" method="post"><input type="hidden" name="product" value="147257"><input type="hidden" name="uenc" value="aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jaGVja291dC9jYXJ0L2FkZC91ZW5jL2FIUjBjSE02THk5M2QzY3VjM0JoY0dGeWRITndjbTl6YUc5d0xtTnZiUzlqYjI1MGNtOXNjeTl6Y0dFdFkyOXVkSEp2YkhNdlpXeGxZM1J5YjI1cFl5OWpiMjF3YkdWMFpUOXphV1JsWDJsdVkyeDFaR1ZrUFRJeU56QTQvcHJvZHVjdC8xNDcyNTcv"><input name="form_key" type="hidden" value="K9mLWKcxzdtdLyS1" /> <button type="submit" title="Add to Cart" class="action tocart primary">Add to Cart</button></form></div></div></div></li></ul></div> <div class="product-label">  </div></div><div class="product-info"><div class="product details product-item-details">  <strong class="product name product-item-name xxx"><a class="product-item-link" href="https://www.spapartsproshop.com/in-ye-electronic-control-system-0610-300003">in.ye Electronic Control System</a></strong> <div>240V, 4.0kW, 2 Pumps, Blower or Pump3</div><div>0610-300003</div>  <div class="price-box price-final_price" data-role="priceBox" data-product-id="147257" data-price-box="product-id-147257">    <span class="price-container price-final_price tax weee" > <span  id="product-price-147257"  data-price-amount="510.99" data-price-type="finalPrice" class="price-wrapper " ><span class="price">$510.99</span></span>    </span>  </div>    <div class="amshopby-option-link brand"><strong>Brand:</strong> <a href="https://www.spapartsproshop.com/brands/gecko-alliance"><div class="amshopby-brand-label" >Gecko Alliance</div></a></div>   </div></div></div></div>  </li><li class="item product product-item"> <div class="product-item-info" data-container="product-grid"><div class="item-inner">  <div class="product-photo"><a href="https://www.spapartsproshop.com/in-yj-electronic-control-system-0612-300002" class="product photo product-item-photo" tabindex="-1"> <span class="image0 image-switch">  <span class="product-image-container product-image-container-147191"><span class="product-image-wrapper"><img class="product-image-photo"  src="https://www.spapartsproshop.com/media/catalog/product/o/l/old_0612-300002_tbnl-81.jpg?quality=80&amp;bg-color=255,255,255&amp;fit=bounds&amp;height=520&amp;width=520&amp;canvas=520:520" loading="lazy" width="520" height="520" alt="in.yj&#x20;Electronic&#x20;Control&#x20;System&#x20;1.0&#x2F;4.0kW,&#x20;Pump1&#x20;Only,&#x20;w&#x2F;K200&#x20;Topside"/></span></span>  <style>.product-image-container-147191 {
+    width: 520px;
+}
+.product-image-container-147191 span.product-image-wrapper {
+    padding-bottom: 100%;
+}</style> </span> <span class="image1 image-switch">  <span class="product-image-container product-image-container-147191"><span class="product-image-wrapper"><img class="product-image-photo"  src="https://www.spapartsproshop.com/media/catalog/product/o/l/old_0612-300002_tbnl-81.jpg?quality=80&amp;bg-color=255,255,255&amp;fit=bounds&amp;height=520&amp;width=520&amp;canvas=520:520" loading="lazy" width="520" height="520" alt="in.yj&#x20;Electronic&#x20;Control&#x20;System&#x20;1.0&#x2F;4.0kW,&#x20;Pump1&#x20;Only,&#x20;w&#x2F;K200&#x20;Topside"/></span></span>  <style>.product-image-container-147191 {
+    width: 520px;
+}
+.product-image-container-147191 span.product-image-wrapper {
+    padding-bottom: 100%;
+}</style> </span></a> <span class="product-item-qty-red"></span>  <div class="addto-links-icons visible-onhover"><div class="action-inner"><ul class="add-to-links"><li>  <a href="#" class="action towishlist" title="Add to Wish List" aria-label="Add to Wish List" data-post='{"action":"https:\/\/www.spapartsproshop.com\/wishlist\/index\/add\/","data":{"product":147191,"uenc":"aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4"}}' data-action="add-to-wishlist" role="button"><i class="icon-heart icons"></i></a> </li> <li>  <a href="#" class="action tocompare" title="Add to Compare" aria-label="Add to Compare" data-post='{"action":"https:\/\/www.spapartsproshop.com\/catalog\/product_compare\/add\/","data":{"product":"147191","uenc":"aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4"}}' role="button"><i class="icon-equalizer icons"></i></a></li>  <li class="quickview-product"><a href="javascript:void(0)" data-role="quickview-button" data-id="147191" data-href="https://www.spapartsproshop.com/quickview/product/quickview/id/147191/" title="Quick view" class="ajax diamond tooltip-hover" data-placement="top" data-original-title="Quick view"><i class="icon-eye icons"></i> </a></li> </ul></div></div><div class="addto-links-bottom"><ul class="add-to-links"><li> <div class="actions-add-cart"><div class="product actions product-item-actions action-inner"><div class="actions-primary">  </div></div></div></li></ul></div> <div class="product-label">  </div></div><div class="product-info"><div class="product details product-item-details">  <strong class="product name product-item-name xxx"><a class="product-item-link" href="https://www.spapartsproshop.com/in-yj-electronic-control-system-0612-300002">in.yj Electronic Control System</a></strong> <div>1.0/4.0kW, Pump1 Only, w/K200 Topside</div><div>0612-300002</div>  <div class="price-box price-final_price" data-role="priceBox" data-product-id="147191" data-price-box="product-id-147191">    <span class="price-container price-final_price tax weee" > <span  id="product-price-147191"  data-price-amount="396.49" data-price-type="finalPrice" class="price-wrapper " ><span class="price">$396.49</span></span>    </span>  </div>    <div class="amshopby-option-link brand"><strong>Brand:</strong> <a href="https://www.spapartsproshop.com/brands/gecko-alliance"><div class="amshopby-brand-label" >Gecko Alliance</div></a></div>   </div></div></div></div></li> </ol></div></div>   <div class="toolbar toolbar-products" data-mage-init='{"productListToolbarForm":{"mode":"product_list_mode","direction":"product_list_dir","order":"product_list_order","limit":"product_list_limit","modeDefault":"grid","directionDefault":"asc","orderDefault":"position","limitDefault":12,"url":"https:\/\/www.spapartsproshop.com\/controls\/spa-controls\/electronic\/complete?side_included=22708","formKey":"K9mLWKcxzdtdLyS1","post":false}}'>    <div class="modes">  <strong class="modes-label" id="modes-label">Hide Sidebar</strong>   <strong title="Grid" class="modes-mode active mode-grid" data-value="grid"><span>Grid</span></strong>    <a class="modes-mode mode-list" title="List" href="#" data-role="mode-switcher" data-value="list" id="mode-list" aria-labelledby="modes-label mode-list"><span>List</span></a>   </div>    <p class="toolbar-amount" id="toolbar-amount"> <span class="toolbar-number">5</span> Items </p>         <div class="grid-mode-show-type-products"><a href="#" class="grid-mode-2" data-grid-mode="2">2</a> <a href="#" class="grid-mode-3 actived" data-grid-mode="3">3</a> <a href="#" class="grid-mode-4" data-grid-mode="4">4</a> <!-- <a href="#" class="grid-mode-5" data-grid-mode="5">5</a> --></div><button class="mobile-filters">Show Filters</button>   <div class="field limiter"><div class="control"><select id="limiter" data-role="limiter" class="limiter-options"> <option value="12" selected="selected">12</option> <option value="24">24</option> <option value="48">48</option></select></div></div>    <div class="toolbar-sorter sorter"><select id="sorter" data-role="sorter" class="sorter-options"> <option value="most_viewed"  >Most Viewed</option> <option value="price_asc"  >Price: low to high</option> <option value="price_desc"  >Price: high to low</option> <option value="name"  >Name</option> <option value="position"  selected="selected"  >Recommended</option></select> <!--  <a title="" href="#" class="action sorter-action sort-desc" data-role="direction-switcher" data-value="asc"><span></span></a>  <a title="" href="#" class="action sorter-action sort-asc" data-role="direction-switcher" data-value="desc"><span></span></a>  --></div> </div>  </div></div></div>          <div class="amshopby-filters-bottom-cms"></div> <div data-am-js="js-init"></div></div><div class="sidebar sidebar-main-1 col-lg-3 col-md-3 col-sm-3 col-xs-12">  <div class="block filter" id="layered-ajax-filter-block" data-mage-init='{"collapsible":{"openedState": "active", "collapsible": true, "active": true, "collateral": { "openedState": "filter-active", "element": "body" } }}'><div class="mobile-filters-close"><i class="fa fa-times"></i></div><div class="block-content filter-content sidebar-shop sidebar-left"> <div class="widget">    <div class="filter-current"><h2 class="widget-title" role="heading" aria-level="2" data-count="1">Now Shopping by</h2><ol class="items"> <li class="item"><span class="filter-label">Keypad Included</span> <span class="filter-value">Included</span>  <a class="action remove" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete" title="Remove Keypad Included Included"><span><i class="fa fa-times" aria-hidden="true"></i></span></a> </li> </ol></div> <div class="block-actions filter-actions"><a href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete" class="action clear filter-clear"><span>Clear All</span></a></div></div>            <div class="filter-options widget widget-filter" id="narrow-by-list" data-role="content"> <div data-role="collapsible" class="filter-options-item"><div data-role="title" class="filter-options-title">Part Manufacturers</div><div data-role="content" class="filter-options-content">  <form class="am-ranges" data-am-js="ranges" data-amshopby-filter="attr_brand" data-amshopby-filter-request-var="brand" autocomplete="off"><ol class="items am-filter-items-attr_brand  -am-multiselect" >    <li class="item " data-label="Balboa">  <a class="am-filter-item-61e84ab07eac7" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete/brand_balboa?side_included=22708"  rel="nofollow" ><span class="label">Balboa</span>  <span class="count">2<span class="filter-count-label">items</span></span> </a> <input name="amshopby[brand][]" value="17281" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="Gecko Alliance">  <a class="am-filter-item-61e84ab07ef0e" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete/brand_gecko-alliance?side_included=22708"  rel="nofollow" ><span class="label">Gecko Alliance</span>  <span class="count">3<span class="filter-count-label">items</span></span> </a> <input name="amshopby[brand][]" value="17386" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li> </ol></form> </div></div>      <div data-role="collapsible" class="filter-options-item"><div data-role="title" class="filter-options-title">Price</div><div data-role="content" class="filter-options-content">            <div class="items am-filter-items-attr_price slider-wrapper"> <form data-amshopby-filter="attr_price" data-amshopby-filter-request-var="price"><div id="am-shopby-filter-attr_price_61e84ab08124b" class="amshopby-slider-container amshopby_currency_rate" data-am-js="slider-container" data-min="396" data-max="566" data-rate="1"><input data-amshopby-slider-id="value" type=hidden name="amshopby[price][]"/><div data-amshopby-slider-id="slider" class="am-slider"></div><div data-amshopby-slider-id="display" class="amshopby-slider-display" data-am-js="slider-display"></div></div></form></div>  <div class="slider-currency">( Price in $USD )</div>  </div></div>                              <div data-role="collapsible" class="filter-options-item"><div data-role="title" class="filter-options-title">System Voltage</div><div data-role="content" class="filter-options-content">  <form class="am-ranges" data-am-js="ranges" data-amshopby-filter="attr_system_voltage" data-amshopby-filter-request-var="system_voltage" autocomplete="off"><ol class="items am-filter-items-attr_system_voltage  -am-multiselect" >    <li class="item " data-label="120/240V">  <a class="am-filter-item-61e84ab081a3a" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?side_included=22708&amp;system_voltage=23548"  rel="nofollow" ><span class="label">120/240V</span>  <span class="count">3<span class="filter-count-label">items</span></span> </a> <input name="amshopby[system_voltage][]" value="23548" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="240V">  <a class="am-filter-item-61e84ab081c9f" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?side_included=22708&amp;system_voltage=23551"  rel="nofollow" ><span class="label">240V</span>  <span class="count">2<span class="filter-count-label">items</span></span> </a> <input name="amshopby[system_voltage][]" value="23551" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li> </ol></form> </div></div>          <div data-role="collapsible" class="filter-options-item"><div data-role="title" class="filter-options-title">Need To Run</div><div data-role="content" class="filter-options-content">  <form class="am-ranges" data-am-js="ranges" data-amshopby-filter="attr_need_to_run" data-amshopby-filter-request-var="need_to_run" autocomplete="off"><ol class="items am-filter-items-attr_need_to_run  -am-multiselect" >    <li class="item " data-label="Pump1">  <a class="am-filter-item-61e84ab082386" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?need_to_run=21682&amp;side_included=22708"  rel="nofollow" ><span class="label">Pump1</span>  <span class="count">1<span class="filter-count-label">item</span></span> </a> <input name="amshopby[need_to_run][]" value="21682" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="Pump1 + Blower/Pump2">  <a class="am-filter-item-61e84ab0825ee" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?need_to_run=21685&amp;side_included=22708"  rel="nofollow" ><span class="label">Pump1 + Blower/Pump2</span>  <span class="count">2<span class="filter-count-label">items</span></span> </a> <input name="amshopby[need_to_run][]" value="21685" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="Pump1 + Pump2 + Blower/Pump3">  <a class="am-filter-item-61e84ab08286d" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?need_to_run=21706&amp;side_included=22708"  rel="nofollow" ><span class="label">Pump1 + Pump2 + Blower/Pump3</span>  <span class="count">2<span class="filter-count-label">items</span></span> </a> <input name="amshopby[need_to_run][]" value="21706" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li> </ol></form> </div></div>          <div data-role="collapsible" class="filter-options-item"><div data-role="title" class="filter-options-title">Pump 1 Circuit</div><div data-role="content" class="filter-options-content">  <form class="am-ranges" data-am-js="ranges" data-amshopby-filter="attr_pump1_circuit" data-amshopby-filter-request-var="pump1_circuit" autocomplete="off"><ol class="items am-filter-items-attr_pump1_circuit  -am-multiselect" >    <li class="item " data-label="1 or 2- Speed Pump 120/240V">  <a class="am-filter-item-61e84ab082f80" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?pump1_circuit=22402&amp;side_included=22708"  rel="nofollow" ><span class="label">1 or 2- Speed Pump 120/240V</span>  <span class="count">3<span class="filter-count-label">items</span></span> </a> <input name="amshopby[pump1_circuit][]" value="22402" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="2- Speed Pump 240V">  <a class="am-filter-item-61e84ab0831de" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?pump1_circuit=22414&amp;side_included=22708"  rel="nofollow" ><span class="label">2- Speed Pump 240V</span>  <span class="count">2<span class="filter-count-label">items</span></span> </a> <input name="amshopby[pump1_circuit][]" value="22414" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li> </ol></form> </div></div>      <div data-role="collapsible" class="filter-options-item"><div data-role="title" class="filter-options-title">Pump 2 Circuit</div><div data-role="content" class="filter-options-content">  <form class="am-ranges" data-am-js="ranges" data-amshopby-filter="attr_pump2_circuit" data-amshopby-filter-request-var="pump2_circuit" autocomplete="off"><ol class="items am-filter-items-attr_pump2_circuit  -am-multiselect" >    <li class="item " data-label="1 or 2- Speed Pump 120/240V">  <a class="am-filter-item-61e84ab0838a1" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?pump2_circuit=22450&amp;side_included=22708"  rel="nofollow" ><span class="label">1 or 2- Speed Pump 120/240V</span>  <span class="count">1<span class="filter-count-label">item</span></span> </a> <input name="amshopby[pump2_circuit][]" value="22450" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="1 or 2- Speed Pump 240V">  <a class="am-filter-item-61e84ab083afe" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?pump2_circuit=22441&amp;side_included=22708"  rel="nofollow" ><span class="label">1 or 2- Speed Pump 240V</span>  <span class="count">1<span class="filter-count-label">item</span></span> </a> <input name="amshopby[pump2_circuit][]" value="22441" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="1- Speed Blower or Pump 120/240V">  <a class="am-filter-item-61e84ab083d29" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?pump2_circuit=22438&amp;side_included=22708"  rel="nofollow" ><span class="label">1- Speed Blower or Pump 120/240V</span>  <span class="count">1<span class="filter-count-label">item</span></span> </a> <input name="amshopby[pump2_circuit][]" value="22438" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="1- Speed Blower or Pump 240V">  <a class="am-filter-item-61e84ab083f59" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?pump2_circuit=22456&amp;side_included=22708"  rel="nofollow" ><span class="label">1- Speed Blower or Pump 240V</span>  <span class="count">1<span class="filter-count-label">item</span></span> </a> <input name="amshopby[pump2_circuit][]" value="22456" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li> </ol></form> </div></div>              <div data-role="collapsible" class="filter-options-item"><div data-role="title" class="filter-options-title">Pump 3 Circuit</div><div data-role="content" class="filter-options-content">  <form class="am-ranges" data-am-js="ranges" data-amshopby-filter="attr_pump3_circuit" data-amshopby-filter-request-var="pump3_circuit" autocomplete="off"><ol class="items am-filter-items-attr_pump3_circuit  -am-multiselect" >    <li class="item " data-label="1- Speed Blower or Pump 120/240V">  <a class="am-filter-item-61e84ab0845f5" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?pump3_circuit=22471&amp;side_included=22708"  rel="nofollow" ><span class="label">1- Speed Blower or Pump 120/240V</span>  <span class="count">1<span class="filter-count-label">item</span></span> </a> <input name="amshopby[pump3_circuit][]" value="22471" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="1- Speed Blower or Pump 240V">  <a class="am-filter-item-61e84ab084840" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?pump3_circuit=22474&amp;side_included=22708"  rel="nofollow" ><span class="label">1- Speed Blower or Pump 240V</span>  <span class="count">1<span class="filter-count-label">item</span></span> </a> <input name="amshopby[pump3_circuit][]" value="22474" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li> </ol></form> </div></div>      <div data-role="collapsible" class="filter-options-item"><div data-role="title" class="filter-options-title">Blower Circuit</div><div data-role="content" class="filter-options-content">  <form class="am-ranges" data-am-js="ranges" data-amshopby-filter="attr_blower_circuit" data-amshopby-filter-request-var="blower_circuit" autocomplete="off"><ol class="items am-filter-items-attr_blower_circuit  -am-multiselect" >    <li class="item " data-label="1- Speed Blower 120/240V">  <a class="am-filter-item-61e84ab084f11" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?blower_circuit=16681&amp;side_included=22708"  rel="nofollow" ><span class="label">1- Speed Blower 120/240V</span>  <span class="count">1<span class="filter-count-label">item</span></span> </a> <input name="amshopby[blower_circuit][]" value="16681" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="1- Speed Blower or Pump 120/240V">  <a class="am-filter-item-61e84ab085172" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?blower_circuit=16675&amp;side_included=22708"  rel="nofollow" ><span class="label">1- Speed Blower or Pump 120/240V</span>  <span class="count">2<span class="filter-count-label">items</span></span> </a> <input name="amshopby[blower_circuit][]" value="16675" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="1- Speed Blower or Pump 240V">  <a class="am-filter-item-61e84ab0853a1" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?blower_circuit=16684&amp;side_included=22708"  rel="nofollow" ><span class="label">1- Speed Blower or Pump 240V</span>  <span class="count">1<span class="filter-count-label">item</span></span> </a> <input name="amshopby[blower_circuit][]" value="16684" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li> </ol></form> </div></div>          <div data-role="collapsible" class="filter-options-item"><div data-role="title" class="filter-options-title">Heater Wattage</div><div data-role="content" class="filter-options-content">  <form class="am-ranges" data-am-js="ranges" data-amshopby-filter="attr_heater_wattage" data-amshopby-filter-request-var="heater_wattage" autocomplete="off"><ol class="items am-filter-items-attr_heater_wattage  -am-multiselect" >    <li class="item " data-label="1.0/4.0kW">  <a class="am-filter-item-61e84ab085a68" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?heater_wattage=21097&amp;side_included=22708"  rel="nofollow" ><span class="label">1.0/4.0kW</span>  <span class="count">3<span class="filter-count-label">items</span></span> </a> <input name="amshopby[heater_wattage][]" value="21097" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="4.0kW">  <a class="am-filter-item-61e84ab085cc4" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?heater_wattage=21148&amp;side_included=22708"  rel="nofollow" ><span class="label">4.0kW</span>  <span class="count">2<span class="filter-count-label">items</span></span> </a> <input name="amshopby[heater_wattage][]" value="21148" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li> </ol></form> </div></div>      <div data-role="collapsible" class="filter-options-item"><div data-role="title" class="filter-options-title">Heater Style</div><div data-role="content" class="filter-options-content">  <form class="am-ranges" data-am-js="ranges" data-amshopby-filter="attr_heater_style" data-amshopby-filter-request-var="heater_style" autocomplete="off"><ol class="items am-filter-items-attr_heater_style  -am-multiselect" >    <li class="item " data-label="Remote Heater">  <a class="am-filter-item-61e84ab086388" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?heater_style=20998&amp;side_included=22708"  rel="nofollow" ><span class="label">Remote Heater</span>  <span class="count">1<span class="filter-count-label">item</span></span> </a> <input name="amshopby[heater_style][]" value="20998" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="Straight/Fixed">  <a class="am-filter-item-61e84ab0865e7" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?heater_style=20995&amp;side_included=22708"  rel="nofollow" ><span class="label">Straight/Fixed</span>  <span class="count">4<span class="filter-count-label">items</span></span> </a> <input name="amshopby[heater_style][]" value="20995" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li> </ol></form> </div></div>      <div data-role="collapsible" class="filter-options-item"><div data-role="title" class="filter-options-title">Keypad Included</div><div data-role="content" class="filter-options-content">  <form class="am-ranges" data-am-js="ranges" data-amshopby-filter="attr_side_included" data-amshopby-filter-request-var="side_included" autocomplete="off"><ol class="items am-filter-items-attr_side_included  -am-multiselect" >    <li class="item " data-label="Included">  <a class="am-filter-item-61e84ab086c8d" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete"  rel="nofollow" ><span class="label">Included</span>  <span class="count">5<span class="filter-count-label">items</span></span> </a> <input name="amshopby[side_included][]" value="22708" type="checkbox" style=""  checked /> <span class="amshopby-choice"></span>  </li>    <li class="item " data-label="Not Included">  <a class="am-filter-item-61e84ab086e50" data-am-js="filter-item-default" href="https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?side_included=22708%2C22711"  rel="nofollow" ><span class="label">Not Included</span>  <span class="count">13<span class="filter-count-label">items</span></span> </a> <input name="amshopby[side_included][]" value="22711" type="checkbox" style=""  /> <span class="amshopby-choice"></span>  </li> </ol></form> </div></div>                                                                                                                                                                                                                                                                                                                     </div><div class="banner_left_2"></div></div><div id="layered_ajax_overlay" class="layered_ajax_overlay"><div><img src="https://www.spapartsproshop.com/static/version1639663301/frontend/bs_rubix/b2c/en_US/images/loader-1.gif" alt="Loading"></div></div></div> </div></div></main><footer class="page-footer footer default"><div class="footer content"><div class="footer-marketing"><div data-content-type="row" data-appearance="contained" data-element="main"><div data-enable-parallax="0" data-parallax-speed="0.5" data-background-images="{}" data-element="inner" data-pb-style="618CEF0512517"><div data-content-type="html" data-appearance="default" data-element="main" data-pb-style="618CEF0512583" data-decoded="true"><div class="grid-x">
+                                        <div class="cell medium-3" style="text-align: center;">
+                                            <h4>Ask us online</h4>
+                                            <a title="Contact_us" href="https://spaparts-contact-forms.squarespace.com/">Contact us</a>
+                                        </div>
+                                        <div class="cell medium-3" style="text-align: center;">
+                                            <h4>Ask us</h4>
+                                            <p>+1.800.237.9937</p>
+                                        </div>
+                                        <div class="cell medium-3" style="text-align: center;">
+                                            <h4>Not a customer?</h4>
+                                            <a title="Open an account" href="https://www.spapartsproshop.com/company/account/create/">Open an account</a>
+                                        </div>
+                                        <div class="cell medium-3" style="text-align: center;">
+                                            <h4>Same day shipping</h4>
+                                            <p>orders placed by 4:30 PM (MST)</p>
+                                        </div>
+                                     </div></div></div></div><style>#html-body [data-pb-style="618CEF0512517"]{justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px 0px 10px; padding: 10px;}#html-body [data-pb-style="618CEF0512583"]{border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;}</style></div> <div class="block newsletter"><div class="content"><form class="form subscribe" novalidate action="https://www.spapartsproshop.com/newsletter/subscriber/new/" method="post" data-mage-init='{"validation": {"errorClass": "mage-error"}}' id="newsletter-validate-detail"><div class="field newsletter"><div class="txt_newsletter"><h3>Subscribe To Our Newsletter</h3><p>Be informed on specials, promotions, new tutorials and much more.</p></div><div class="control"><input name="email" type="email" id="newsletter" placeholder="Enter your email here..." data-validate="{required:true, 'validate-email':true}"/><div class="actions"><button class="action subscribe primary" title="Subscribe" type="submit"><span>Subscribe</span></button></div></div><div class="txt_newsletter2"><p>We respect your privacy, so we never share your info.</p></div></div></form></div></div><div class="footer-main"> </div> <div class="field-recaptcha" id="recaptcha-caa20ac351216e6f76edced1efe7c61fff5f4796-container" data-bind="scope:'recaptcha-caa20ac351216e6f76edced1efe7c61fff5f4796'" ><!-- ko template: getTemplate() --><!-- /ko --></div></div> <div class="footer-absolute"><div class="footer content"><div class="footer-legal"> <div class="legal-menu"><a href="#">Link to be determined by Claude</a></div>  <p class="copyright">Text to be determined by Claude</p></div></div></div><!-- <div id="back-top" class=""><i class="icon-arrow-up icons"></i></div><div class="footer-container"><div class="footer-static-container"><div class="container"><div class="footer-static"></div></div></div><div class="footer-bottom"><div class="container"><div class="row"><div class="col-sm-6 col-xs-12"><div class="copyright"> <small class="copyright"><span></span></small></div></div><div class="col-sm-6 col-xs-12 text-right"></div></div></div></div></div> --> <div class="widget block block-static-block"><style>#html-body [data-pb-style=B79PYQ4],#html-body [data-pb-style=LQVFUU8]{justify-content:flex-start;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;border-style:none;border-width:1px;border-radius:0;margin:0 0 10px;padding:10px}#html-body [data-pb-style=B79PYQ4]{justify-content:center;width:25%;margin:0;align-self:flex-start}#html-body [data-pb-style=IMI0MSN],#html-body [data-pb-style=K8E2578]{border-style:none;border-width:1px;border-radius:0;margin:0;padding:0}#html-body [data-pb-style=K8E2578]{justify-content:center;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;width:25%;padding:10px;align-self:flex-start}#html-body [data-pb-style=GTCY1HP],#html-body [data-pb-style=RH47NHQ]{border-style:none;border-width:1px;border-radius:0;margin:0;padding:0}#html-body [data-pb-style=RH47NHQ]{justify-content:center;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;width:25%;padding:10px;align-self:flex-start}#html-body [data-pb-style=L1VY4DA],#html-body [data-pb-style=S82CPKL]{border-style:none;border-width:1px;border-radius:0;margin:0;padding:0}#html-body [data-pb-style=S82CPKL]{justify-content:center;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;width:25%;padding:10px;align-self:flex-start}#html-body [data-pb-style=GSJAS72]{border-style:none;border-width:1px;border-radius:0;margin:0;padding:0}#html-body [data-pb-style=RK0HKAG],#html-body [data-pb-style=TAXBDL5]{justify-content:flex-start;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;border-style:none;border-width:1px;border-radius:0;margin:0 0 10px;padding:10px 0}#html-body [data-pb-style=TAXBDL5]{width:58.3333%;margin:0;padding:10px;align-self:stretch}#html-body [data-pb-style=P3W1AW9],#html-body [data-pb-style=USRBV6X]{border-style:none;border-width:1px;border-radius:0;margin:0;padding:0}#html-body [data-pb-style=P3W1AW9]{justify-content:flex-start;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;width:41.6667%;padding:10px;align-self:stretch}#html-body [data-pb-style=HKQAS91]{border-style:none;border-width:1px;border-radius:0;margin:0;padding:0}</style><div data-content-type="row" data-appearance="contained" data-element="main"><div data-enable-parallax="0" data-parallax-speed="0.5" data-background-images="{}" data-background-type="image" data-video-loop="true" data-video-play-only-visible="true" data-video-lazy-load="true" data-video-fallback-src="" data-element="inner" data-pb-style="LQVFUU8"><div class="pagebuilder-column-group" style="display: flex;" data-content-type="column-group" data-grid-size="12" data-element="main"><div class="pagebuilder-column" data-content-type="column" data-appearance="align-top" data-background-images="{}" data-element="main" data-pb-style="B79PYQ4"><div data-content-type="html" data-appearance="default" data-element="main" data-pb-style="IMI0MSN" data-decoded="true"><p class="logo-footer">
+  <img class="img-fluid" src="https://www.spapartsproshop.com/media/b2c_images/SpaPartsProShop_logo_black.png" alt="logo" />
+</p>
+<ul class="social_links">
+    <li>
+        <a href="https://business.facebook.com/spapartsproshop" target="blank"> 
+            <i class="icon-social-facebook icons"></i>
+        </a>
+    </li>
+    <li>
+        <a href="https://www.instagram.com/spapartsproshop/" target="blank">
+            <i class="icon-social-instagram icons"></i>
+        </a>
+    </li>
+    <li>
+        <a href="https://www.pinterest.com/SpaPartsProShop1/_created/" target="blank"> 
+            <i class="icon-social-pinterest icons"></i>
+        </a>
+    </li>
+</ul>
+<style>
+.social_links {
+display: flex;
+margin-top: 15px;
+}
+.social_links a {
+color: #fff;
+padding-right: 15px;
+font-size: 20px;
+}
+.social_links a:hover {
+text-decoration: none;
+color: #ba933e;
+}
+.social_links a i {
+font-weight: 600;
+}
+</style></div></div><div class="pagebuilder-column" data-content-type="column" data-appearance="align-top" data-background-images="{}" data-element="main" data-pb-style="K8E2578"><div data-content-type="html" data-appearance="default" data-element="main" data-pb-style="GTCY1HP" data-decoded="true"><h2 class="footer-heading">Customer Services</h2>
+<ul class="footer-social">
+    <li>
+    <a href="https://spapartsproshop.squarespace.com/customerservicecontactform" title="Contact customer service">Contact customer service</a>
+    </li>
+    <li>
+    <a href="/sales/guest/form" title="My order status">My order status</a>
+    </li>
+    <li>
+    <a href="/sales/guest/form" title="Track my order">Track my order</a>
+    </li>
+    <li>
+    <a href="/pro-on-special" title="Specials & Promotions">Specials & Promotions</a>
+    </li>
+    <li>
+    <a href="/pro-clearance" title="Clearance">Clearance</a>
+    </li>
+    <li>
+    <a href="/pro-shipping-cancellation" title="Shipping & Cancellation">Shipping & Cancellation</a>
+    </li>
+    <li>
+    <a href="/pro-terms-of-sales" title="Terms of Sales">Terms of Sales</a>
+    </li>
+</ul></div></div><div class="pagebuilder-column" data-content-type="column" data-appearance="align-top" data-background-images="{}" data-element="main" data-pb-style="RH47NHQ"><div data-content-type="html" data-appearance="default" data-element="main" data-pb-style="L1VY4DA" data-decoded="true"><h2 class="footer-heading">Tech Support</h2>
+<ul class="footer-social">
+    <li>
+    <a href="https://spapartsproshop.squarespace.com/contact-technical-support" title="Contact tech support">Contact tech support</a>
+    </li>
+    <li>
+    <a href="/pro-product-return" title="Warranty & Returns">Warranty & Returns</a>
+    </li>   
+</ul></div></div><div class="pagebuilder-column" data-content-type="column" data-appearance="align-top" data-background-images="{}" data-element="main" data-pb-style="S82CPKL"><div data-content-type="html" data-appearance="default" data-element="main" data-pb-style="GSJAS72" data-decoded="true"><h2 class="footer-heading">More</h2>
+<ul class="footer-social">
+    <li>
+    <a href="/pro-about-us" title="About us">About us</a>
+    </li>
+    <li>
+    <a href="/pro-newsroom" title="Newsroom">Newsroom</a>
+    </li> 
+    <li>
+    <a href="/pro-privacy-policy" title="Privacy Policy">Privacy Policy</a>
+    </li>   
+     <li>
+    <a href="/pro-testimonials" title="Testimonials">Testimonials</a>
+    </li>   
+</ul></div></div></div></div></div><div class="footer_bottom" data-content-type="row" data-appearance="full-width" data-enable-parallax="0" data-parallax-speed="0.5" data-background-images="{}" data-background-type="image" data-video-loop="true" data-video-play-only-visible="true" data-video-lazy-load="true" data-video-fallback-src="" data-element="main" data-pb-style="RK0HKAG"><div class="row-full-width-inner" data-element="inner"><div class="pagebuilder-column-group" style="display: flex;" data-content-type="column-group" data-grid-size="12" data-element="main"><div class="pagebuilder-column" data-content-type="column" data-appearance="full-height" data-background-images="{}" data-element="main" data-pb-style="TAXBDL5"><div data-content-type="html" data-appearance="default" data-element="main" data-pb-style="USRBV6X" data-decoded="true"><div class="copyright">
+   <p>© 2021</p>
+ </div></div></div><div class="pagebuilder-column" data-content-type="column" data-appearance="full-height" data-background-images="{}" data-element="main" data-pb-style="P3W1AW9"><div data-content-type="html" data-appearance="default" data-element="main" data-pb-style="HKQAS91" data-decoded="true"><ul class="payment-links">
+						<li>
+						<a href="#">
+                                                 <img src="https://www.spapartsproshop.com/media/b2c_images/visa.png" alt="visa" /></a>
+						</li>
+						<li>
+						<a href="#">
+                                                 <img src="https://www.spapartsproshop.com/media/b2c_images/mastercard.png" alt="mastercard" /></a>
+						</li>
+						<li>
+						<a href="#"> <img src="https://www.spapartsproshop.com/media/b2c_images/paypal.png" alt="paypal" /></a>
+						</li>
+						<li>
+						<a href="#">  <img src="https://www.spapartsproshop.com/media/b2c_images/american.png" alt="american" /></a>
+						</li>
+					</ul></div></div></div></div></div></div></footer>      <div class="ajaxsuite-popup-wrapper modals-wrapper" id="ajaxsuite-popup-wrapper"><a id="ajaxsuite-close" class="ajaxsuite-close"></a> <div id="ajaxsuite-popup-content"></div></div>   </div></div></div>
+<script> var BASE_URL = 'https\u003A\u002F\u002Fwww.spapartsproshop.com\u002F'; var require = { 'baseUrl': 'https\u003A\u002F\u002Fwww.spapartsproshop.com\u002Fstatic\u002Fversion1639663301\u002Ffrontend\u002Fbs_rubix\u002Fb2c\u002Fen_US' };</script>
+<script  type="text/javascript"  src="https://www.spapartsproshop.com/static/version1639663301/_cache/merged/b8e3bff7c0c3ace96bae8feca589b342.min.js"></script>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '941513666432046');
+fbq('track', 'PageView');
+</script>
+<script>
+
+    dataLayerGlobal = window.dataLayerGlobal || {};
+
+    var cart  = JSON.parse(localStorage.getItem('mage-cache-storage'));
+    var cartInfoObject = {
+		'cartQuantity': 0,
+		'cartValue': '0'
+	};
+
+    if (cart !== null && typeof cart.cart !== "undefined") {
+        var cartItemsQty = cart.cart.summary_count;
+        var cartValue    = cart.cart.subtotalAmount === null ? 0 : parseFloat(cart.cart.subtotalAmount).toFixed(2);
+
+        
+        cartInfoObject = {
+            'cartQuantity': cartItemsQty,
+            'cartValue': cartValue
+        };
+    }
+
+    var cartInfoKeys = Object.keys(cartInfoObject);
+
+    for(var j=0; j < cartInfoKeys.length; j += 1) {
+        dataLayerGlobal[cartInfoKeys[j]] = cartInfoObject[cartInfoKeys[j]];
+    }</script>
+<script>
+
+    dataLayerGlobal = window.dataLayerGlobal || {};
+
+    var storeLocale = 'en-US';
+    var storeCurrency = 'USD';
+
+    
+    var storeInfoObject = {
+        'store': storeLocale,
+        'currency': storeCurrency
+    };
+
+    var storeInfoKeys = Object.keys(storeInfoObject);
+
+    for(var j=0; j < storeInfoKeys.length; j += 1) {
+        dataLayerGlobal[storeInfoKeys[j]] = storeInfoObject[storeInfoKeys[j]];
+    }</script>
+<script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_PageCache/js/form-key-provider": {}
+            }
+        }</script>
+<script>
+                    //<![CDATA[
+                    (function (w, d, s, l, i) {
+                        w[l] = w[l] || [];
+                         w[l].push(dataLayerGlobal);
+                         w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+                        var f = d.getElementsByTagName(s)[0];
+                        var j = d.createElement(s);
+                        var dl = l != 'dataLayer' ? '&l=' + l : '';
+                        j.async = true;
+                                                 j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                          f.parentNode.insertBefore(j, f);
+                    })(window, document, 'script', 'dataLayer', 'GTM-MDBRFTX');
+
+                     window.coMemberLogInRecently = '0';
+                    window.dlCurrencyCode = 'USD';
+                                         //]]>
+</script>
+<script>
+
+    dataLayerGlobal = window.dataLayerGlobal || {};
+
+    
+    var customerInfoObject = {};
+
+    var info = document.cookie.match(
+        new RegExp('absolunet_gtm_customerInfo' + '=([^;]+)')
+    );
+
+    if (info !== null && info.length > 0) {
+        info = JSON.parse(decodeURIComponent(info[1]));
+
+         customerInfoObject = {
+                'memberType': info.customerMemberType,
+                'loginStatus': 'logged-out'
+            };
+         } else {
+        customerInfoObject = {
+            'memberType': 'guest',
+            'loginStatus': 'logged-out'
+        };
+    }
+
+    var customerInfoKeys = Object.keys(customerInfoObject);
+
+    for(var j=0; j < customerInfoKeys.length; j += 1) {
+        dataLayerGlobal[customerInfoKeys[j]] = customerInfoObject[customerInfoKeys[j]];
+    }</script>
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"WebSite","url":"https:\/\/www.spapartsproshop.com\/","name":"Spa Parts ProShop","about":"We\u2019re spa and hot tub owners\u2019 coast to coast professional source of pumps from the industry's top manufacturers."}</script>
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"OutletStore","@id":"https:\/\/www.spapartsproshop.com\/","name":"Spa Parts ProShop","description":"Spa Parts Pro Shop is the #1 source of professional quality replacement equipment, parts and components for Spa and Hot Tub owners.  \r\n\r\nOur mission is to provide our customers with top quality products along with outstanding technical and customer service.","telephone":"1-833-989-7467","email":"customerservice@spapartsproshop.com","address":{"@type":"PostalAddress","addressLocality":"Memphis","addressRegion":"TN","streetAddress":"373 Saturn Drive","postalCode":"38109"},"image":"https:\/\/www.spapartsproshop.com\/media\/seller_image\/","priceRange":"$$-$$$","url":"https:\/\/www.spapartsproshop.com\/"}</script>
+<script type="application/ld+json">{"@context":"http:\/\/schema.org\/","@type":"WebPage","url":"https:\/\/www.spapartsproshop.com\/controls\/spa-controls\/electronic\/complete?side_included=22708","mainEntity":{"@context":"http:\/\/schema.org","@type":"OfferCatalog","name":"Complete","url":"https:\/\/www.spapartsproshop.com\/controls\/spa-controls\/electronic\/complete?side_included=22708","numberOfItems":5,"itemListElement":[{"@type":"Product","name":"BP7 Control System Bundle 230V Only, 4.0kW, w\/TP500 Topside","description":"With 7 relays, the BP7 has 32 different setups and can power a spa with 1-4 pumps, including Microsilk systems. Can also replace any Balboa BP System* while using the existing topside that is already installed on the spa. Will replace any Balboa VS or EL System* when you match it with any TP or SpaTouch topside panel. Will replace any Balboa or other brand\u2019s non-low flow system* when you match it with any TP or SpaTouch topside panel. This system can only be used as 220v.","image":"https:\/\/www.spapartsproshop.com\/media\/catalog\/product\/o\/l\/old_g6405_tbnl-83.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=1056&width=850&canvas=850:1056","offers":{"@type":"http:\/\/schema.org\/Offer","price":561.99,"url":"https:\/\/www.spapartsproshop.com\/bp7-control-system-bundle-g6405","priceCurrency":"USD","availability":"http:\/\/schema.org\/InStock"},"brand":"Balboa","sku":"G6405","category":"Complete","mpn":"G6405"},{"@type":"Product","name":"BP7 Control System Bundle 230V Only, 4.0kW, w\/TP600 Topside","description":"A system built for the aftermarket.. With 7 relays, the BP7 has 32 different setups and can power a spa with 1-4 pumps, including Microsilk systems. Can also replace any Balboa BP System* while using the existing topside that is already installed on the spa. Will replace any Balboa VS or EL System* when you match it with any TP or SpaTouch topside panel. Will replace any Balboa or other brand\u2019s non-low flow system* when you match it with any TP or SpaTouch topside panel. This system can only be used at 220v.","image":"https:\/\/www.spapartsproshop.com\/media\/catalog\/product\/o\/l\/old_g6406_tbnl-83.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=1056&width=850&canvas=850:1056","offers":{"@type":"http:\/\/schema.org\/Offer","price":565.49,"url":"https:\/\/www.spapartsproshop.com\/bp7-control-system-bundle-g6406","priceCurrency":"USD","availability":"http:\/\/schema.org\/InStock"},"brand":"Balboa","sku":"G6406","category":"Complete","mpn":"G6406"},{"@type":"Product","name":"in.ye Electronic Control System 115\/230V, 1.0\/4.0kW, Pump1, Blower or Pump2","description":"in.ye control systems are designed to fit in perfectly and to be easily installed, powered and connected to pumps and accessories of spas of all sizes and configurations. Like all other platforms of Gecko\u2019s Y series, in.ye is compatible to a wide selection of keypads and auto-detects the selected keypad model. in.ye control systems open up to the addition of wireless control from mobile devices, water sanitization, audio streaming and more accessories to increase the quality of the spa experience.","image":"https:\/\/www.spapartsproshop.com\/media\/catalog\/product\/b\/e\/bea_0610-300004_spa-control-electronic-complete-gecko-in.ye-25.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=1056&width=850&canvas=850:1056","offers":{"@type":"http:\/\/schema.org\/Offer","price":532.49,"url":"https:\/\/www.spapartsproshop.com\/in-ye-electronic-control-system-0610-300004","priceCurrency":"USD","availability":"http:\/\/schema.org\/InStock"},"brand":"Gecko Alliance","sku":"0610-300004","category":"Complete","mpn":"0610-300004"},{"@type":"Product","name":"in.ye Electronic Control System 240V, 4.0kW, 2 Pumps, Blower or Pump3","description":"in.ye control systems are designed to fit in perfectly and to be easily installed, powered and connected to pumps and accessories of spas of all sizes and configurations. Like all other platforms of Gecko\u2019s Y series, in.ye is compatible to a wide selection of keypads and auto-detects the selected keypad model. in.ye control systems open up to the addition of wireless control from mobile devices, water sanitization, audio streaming and more accessories to increase the quality of the spa experience.","image":"https:\/\/www.spapartsproshop.com\/media\/catalog\/product\/b\/e\/bea_0610-300003_spa.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=1056&width=850&canvas=850:1056","offers":{"@type":"http:\/\/schema.org\/Offer","price":510.99,"url":"https:\/\/www.spapartsproshop.com\/in-ye-electronic-control-system-0610-300003","priceCurrency":"USD","availability":"http:\/\/schema.org\/InStock"},"brand":"Gecko Alliance","sku":"0610-300003","category":"Complete","mpn":"0610-300003"},{"@type":"Product","name":"in.yj Electronic Control System 1.0\/4.0kW, Pump1 Only, w\/K200 Topside","description":"It\u2019s well known that the best-selling in.yj-3 is the nicest control system for small footprint spas. But the temptation to muscle it up and make it the best there is proved irresistible. With its boosted CPU, more memory and higher capacity relays, in.yj-3 now has the power it needs for new features\u2026 like an updated FLO circuit, LED lights for troubleshooting clues and dual phase CE configuration so it can be used anywhere in the world.","image":"https:\/\/www.spapartsproshop.com\/media\/catalog\/product\/o\/l\/old_0612-300002_tbnl-81.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=1056&width=850&canvas=850:1056","offers":{"@type":"http:\/\/schema.org\/Offer","price":396.49,"url":"https:\/\/www.spapartsproshop.com\/in-yj-electronic-control-system-0612-300002","priceCurrency":"USD","availability":"http:\/\/schema.org\/OutOfStock"},"brand":"Gecko Alliance","sku":"0612-300002","category":"Complete","mpn":"0612-300002"}]},"speakable":{"@type":"SpeakableSpecification","cssSelector":[".category-description"],"xpath":["\/html\/head\/title"]}}</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_PageBuilder/js/widget-initializer": {
+                "config": {"[data-content-type=\"slider\"][data-appearance=\"default\"]":{"Magento_PageBuilder\/js\/content-type\/slider\/appearance\/default\/widget":false},"[data-content-type=\"map\"]":{"Magento_PageBuilder\/js\/content-type\/map\/appearance\/default\/widget":false},"[data-content-type=\"row\"]":{"Magento_PageBuilder\/js\/content-type\/row\/appearance\/default\/widget":false},"[data-content-type=\"tabs\"]":{"Magento_PageBuilder\/js\/content-type\/tabs\/appearance\/default\/widget":false},"[data-content-type=\"slide\"]":{"Magento_PageBuilder\/js\/content-type\/slide\/appearance\/default\/widget":{"buttonSelector":".pagebuilder-slide-button","showOverlay":"hover","dataRole":"slide"}},"[data-content-type=\"banner\"]":{"Magento_PageBuilder\/js\/content-type\/banner\/appearance\/default\/widget":{"buttonSelector":".pagebuilder-banner-button","showOverlay":"hover","dataRole":"banner"}},"[data-content-type=\"buttons\"]":{"Magento_PageBuilder\/js\/content-type\/buttons\/appearance\/inline\/widget":false},"[data-content-type=\"products\"][data-appearance=\"carousel\"]":{"Amasty_Xsearch\/js\/content-type\/products\/appearance\/carousel\/widget-override":false},"[data-content-type=\"dotdigitalgroup_form\"]":{"Dotdigitalgroup_Enterprise\/js\/content-type\/dotdigitalgroup-form\/appearance\/default\/widget":false}},
+                "breakpoints": {"desktop":{"label":"Desktop","stage":true,"default":true,"class":"desktop-switcher","icon":"Magento_PageBuilder::css\/images\/switcher\/switcher-desktop.svg","conditions":{"min-width":"1024px"},"options":{"products":{"default":{"slidesToShow":"4"}}}},"tablet":{"conditions":{"max-width":"1024px","min-width":"768px"},"options":{"products":{"default":{"slidesToShow":"2"},"continuous":{"slidesToShow":"2"}}}},"mobile":{"label":"Mobile","stage":true,"class":"mobile-switcher","icon":"Magento_PageBuilder::css\/images\/switcher\/switcher-mobile.svg","media":"only screen and (max-width: 768px)","conditions":{"max-width":"768px","min-width":"640px"},"options":{"products":{"default":{"slidesToShow":"2"}}}},"mobile-small":{"conditions":{"max-width":"640px"},"options":{"products":{"default":{"slidesToShow":"1"},"continuous":{"slidesToShow":"1"}}}}}            }
+        }
+    }</script>
+<script>
+    window.logoUrl = 'https://www.spapartsproshop.com/media/logo/websites/13/SpaPartsProShop_logo_black.png';</script>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "rokanthemes/ajaxsuite"    : {
+                "loginUrl": "https://www.spapartsproshop.com/customer/account/login/",
+                "customerId": "",
+                "ajaxCart" : {
+                    "enabled" : 1,
+                    "actionAfterSuccess" : "popup"
+                },
+                "ajaxWishList" : {
+                    "enabled" : 1,
+                    "WishlistUrl": "https://www.spapartsproshop.com/ajaxsuite/wishlist/add/"
+                },
+                "ajaxCompare" : {
+                    "enabled" : 1,
+                    "CompareUrl": "https://www.spapartsproshop.com/ajaxsuite/compare/add/"
+                }
+            }
+    }
+}</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "mage/cookies": {
+                "expires": null,
+                "path": "\u002F",
+                "domain": ".www.spapartsproshop.com",
+                "secure": false,
+                "lifetime": "21600"
+            }
+        }
+    }</script>
+<script>    require.config({
+        map: {
+            '*': {
+                wysiwygAdapter: 'mage/adminhtml/wysiwyg/tiny_mce/tinymce4Adapter'
+            }
+        }
+    });</script>
+<script> window.cookiesConfig = window.cookiesConfig || {}; window.cookiesConfig.secure = false; </script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_GoogleTagManager/js/google-tag-manager-cart": {
+                "blockNames": ["category.products.list","product.info.upsell","catalog.product.related","checkout.cart.crosssell","search_result_list"],
+                "cookieAddToCart": "add_to_cart",
+                "cookieRemoveFromCart": "remove_from_cart"
+            }
+        }
+    }</script>
+<script>
+    require.config({
+        paths: {
+            googleMaps: 'https\u003A\u002F\u002Fmaps.googleapis.com\u002Fmaps\u002Fapi\u002Fjs\u003Fv\u003D3\u0026key\u003D'
+        },
+        config: {
+            'Magento_PageBuilder/js/utils/map': {
+                style: ''
+            },
+            'Magento_PageBuilder/js/content-type/map/preview': {
+                apiKey: '',
+                apiKeyErrorMessage: 'You\u0020must\u0020provide\u0020a\u0020valid\u0020\u003Ca\u0020href\u003D\u0027https\u003A\u002F\u002Fwww.spapartsproshop.com\u002Fadminhtml\u002Fsystem_config\u002Fedit\u002Fsection\u002Fcms\u002F\u0023cms_pagebuilder\u0027\u0020target\u003D\u0027_blank\u0027\u003EGoogle\u0020Maps\u0020API\u0020key\u003C\u002Fa\u003E\u0020to\u0020use\u0020a\u0020map.'
+            },
+            'Magento_PageBuilder/js/form/element/map': {
+                apiKey: '',
+                apiKeyErrorMessage: 'You\u0020must\u0020provide\u0020a\u0020valid\u0020\u003Ca\u0020href\u003D\u0027https\u003A\u002F\u002Fwww.spapartsproshop.com\u002Fadminhtml\u002Fsystem_config\u002Fedit\u002Fsection\u002Fcms\u002F\u0023cms_pagebuilder\u0027\u0020target\u003D\u0027_blank\u0027\u003EGoogle\u0020Maps\u0020API\u0020key\u003C\u002Fa\u003E\u0020to\u0020use\u0020a\u0020map.'
+            },
+        }
+    });</script>
+<script>
+    require.config({
+        shim: {
+            'Magento_PageBuilder/js/utils/map': {
+                deps: ['googleMaps']
+            }
+        }
+    });</script>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'rokanthemes/custommenu'
+    ], function ($) {
+        $(".custommenu").CustomMenu();
+    });</script>
+<script>
+    require([
+        'jquery',
+    ], function ($) {
+
+        $(".controls-sub-category, .pumps-sub-category, .blog-sub-links, .filters-sub-category, .spa-controls-sub-category, .glossary-sub-links, .heaters-sub-category").hide();
+        $(".controls-category").on("click", function () {
+            $(".controls-sub-category").toggle();
+            $(".pumps-sub-category, .filters-sub-category, .glossary-sub-links, .spa-controls-sub-category, .blog-sub-links, .heaters-sub-category").hide();
+        });
+        $(".pumps-category").on("click", function () {
+            $(".pumps-sub-category").toggle();
+            $(".controls-sub-category, .filters-sub-category, .glossary-sub-links, .spa-controls-sub-category, .blog-sub-links, .heaters-sub-category").hide();
+        });
+
+        $(".blog-links").on("click", function () {
+            $(".controls-sub-category, .pumps-sub-category, .filters-sub-category, .spa-controls-sub-category, .glossary-sub-links, .heaters-sub-category").hide();
+            $(".blog-sub-links").toggle();
+        });
+
+        $(".filters-category").on("click", function () {
+            $(".controls-sub-category, .pumps-sub-category, .spa-controls-sub-category, .glossary-sub-links, .blog-sub-links, .heaters-sub-category").hide();
+            $(".filters-sub-category").toggle();
+        });
+
+        $(".spa-controls-category").on("click", function () {
+            $(".controls-sub-category, .pumps-sub-category, .filters-sub-category, .glossary-sub-links, .blog-sub-links, .heaters-sub-category").hide();
+            $(".spa-controls-sub-category").toggle();
+        });
+
+        $(".heaters-category").on("click", function () {
+            $(".controls-sub-category, .spa-controls-sub-category, .pumps-sub-category, .filters-sub-category, .glossary-sub-links, .blog-sub-links").hide();
+            $(".heaters-sub-category").toggle();
+        });
+
+        $(".glossary-links").on("click", function () {
+            $(".controls-sub-category, .pumps-sub-category, .filters-sub-category, .spa-controls-sub-category, .blog-sub-links").hide();
+            $(".glossary-sub-links").toggle();
+        });
+    });</script>
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        'use strict';
+        $( document ).ready(function() {
+            $('.block-search .dropdown-toggle > .fixed-click-show-destop').click(function(event){
+                $('.block-search .minisearchshow-destop').slideToggle();
+            });
+        });
+    });</script>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "searchsuiteautocomplete_form": {
+                    "component": "Rokanthemes_SearchSuiteAutocomplete/js/autocomplete"
+                },
+                "searchsuiteautocompleteBindEvents": {
+                    "component": "Rokanthemes_SearchSuiteAutocomplete/js/bindEvents",
+                    "config": {
+                        "searchFormSelector": "#search_mini_form",
+                        "searchButtonSelector": "button.search",
+                        "inputSelector": "#search-input-autocomplate",
+                        "searchDelay": "500"
+                    }
+                },
+                "searchsuiteautocompleteDataProvider": {
+                    "component": "Rokanthemes_SearchSuiteAutocomplete/js/dataProvider",
+                    "config": {
+                        "url": "https://www.spapartsproshop.com/rokanthemes_searchsuiteautocomplete/ajax/index/"
+                    }
+                }
+            }
+        }
+    }
+}</script>
+<script>
+        window.checkout = {"shoppingCartUrl":"https:\/\/www.spapartsproshop.com\/checkout\/cart\/","checkoutUrl":"https:\/\/www.spapartsproshop.com\/checkout\/","updateItemQtyUrl":"https:\/\/www.spapartsproshop.com\/checkout\/sidebar\/updateItemQty\/","removeItemUrl":"https:\/\/www.spapartsproshop.com\/checkout\/sidebar\/removeItem\/","imageTemplate":"Magento_Catalog\/product\/image_with_borders","baseUrl":"https:\/\/www.spapartsproshop.com\/","minicartMaxItemsVisible":5,"websiteId":"13","maxItemsToDisplay":10,"storeId":"13","storeGroupId":"13","customerLoginUrl":"https:\/\/www.spapartsproshop.com\/customer\/account\/login\/referer\/aHR0cHM6Ly93d3cuc3BhcGFydHNwcm9zaG9wLmNvbS9jb250cm9scy9zcGEtY29udHJvbHMvZWxlY3Ryb25pYy9jb21wbGV0ZT9zaWRlX2luY2x1ZGVkPTIyNzA4\/","isRedirectRequired":true,"autocomplete":"off","miniCartEnabled":true,"captcha":{"user_login":{"isCaseSensitive":false,"imageHeight":50,"imageSrc":"","refreshUrl":"https:\/\/www.spapartsproshop.com\/captcha\/refresh\/","isRequired":false,"timestamp":1642613423}}};</script>
+<script type="text/x-magento-init">
+    {
+        "[data-block='minicart']": {
+            "Magento_Ui/js/core/app": {"components":{"minicart_content":{"children":{"subtotal.container":{"children":{"subtotal":{"children":{"subtotal.totals":{"config":{"display_cart_subtotal_incl_tax":0,"display_cart_subtotal_excl_tax":1,"template":"Magento_Tax\/checkout\/minicart\/subtotal\/totals"},"component":"Magento_Tax\/js\/view\/checkout\/minicart\/subtotal\/totals","children":{"subtotal.totals.msrp":{"component":"Magento_Msrp\/js\/view\/checkout\/minicart\/subtotal\/totals","config":{"displayArea":"minicart-subtotal-hidden","template":"Magento_Msrp\/checkout\/minicart\/subtotal\/totals"}}}}},"component":"uiComponent","config":{"template":"Magento_Checkout\/minicart\/subtotal"}}},"component":"uiComponent","config":{"displayArea":"subtotalContainer"}},"item.renderer":{"component":"Magento_Checkout\/js\/view\/cart-item-renderer","config":{"displayArea":"defaultRenderer","template":"Magento_Checkout\/minicart\/item\/default"},"children":{"item.image":{"component":"Magento_Catalog\/js\/view\/image","config":{"template":"Magento_Catalog\/product\/image","displayArea":"itemImage"}},"checkout.cart.item.price.sidebar":{"component":"uiComponent","config":{"template":"Magento_Checkout\/minicart\/item\/price","displayArea":"priceSidebar"}}}},"extra_info":{"component":"uiComponent","config":{"displayArea":"extraInfo"}},"promotion":{"component":"uiComponent","config":{"displayArea":"promotion"}}},"config":{"itemRenderer":{"default":"defaultRenderer","simple":"defaultRenderer","virtual":"defaultRenderer"},"template":"Magento_Checkout\/minicart\/content"},"component":"Magento_Checkout\/js\/view\/minicart"}},"types":[]} },
+        "*": {
+            "Magento_Ui/js/block-loader": "https://www.spapartsproshop.com/static/version1639663301/frontend/bs_rubix/b2c/en_US/images/loader-1.gif"
+        }
+    }</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                        "messages": {
+                            "component": "Magento_Theme/js/view/messages"
+                        }
+                    }
+                }
+            }
+    }</script>
+<script>window.authenticationPopup = {"autocomplete":"off","customerRegisterUrl":"https:\/\/www.spapartsproshop.com\/customer\/account\/create\/","customerForgotPasswordUrl":"https:\/\/www.spapartsproshop.com\/customer\/account\/forgotpassword\/","baseUrl":"https:\/\/www.spapartsproshop.com\/"}</script>
+<script type="text/x-magento-init">
+        {
+            "#authenticationPopup": {
+                "Magento_Ui/js/core/app": {"components":{"authenticationPopup":{"component":"Magento_Customer\/js\/view\/authentication-popup","children":{"messages":{"component":"Magento_Ui\/js\/view\/messages","displayArea":"messages"},"captcha":{"component":"Magento_Captcha\/js\/view\/checkout\/loginCaptcha","displayArea":"additional-login-form-fields","formId":"user_login","configSource":"checkout"},"recaptcha":{"component":"Magento_ReCaptchaFrontendUi\/js\/reCaptcha","displayArea":"additional-login-form-fields","reCaptchaId":"recaptcha-popup-login","settings":{"rendering":{"sitekey":"6Ld29okdAAAAAMMg36ovCxvMLA74pdG75Z_y4Koq","badge":"bottomright","size":"invisible","theme":"light","hl":""},"invisible":true}}}}}}            },
+            "*": {
+                "Magento_Ui/js/block-loader": "https\u003A\u002F\u002Fwww.spapartsproshop.com\u002Fstatic\u002Fversion1639663301\u002Ffrontend\u002Fbs_rubix\u002Fb2c\u002Fen_US\u002Fimages\u002Floader\u002D1.gif"
+            }
+        }</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Customer/js/section-config": {
+                "sections": {"stores\/store\/switch":["*"],"stores\/store\/switchrequest":["*"],"directory\/currency\/switch":["*"],"*":["messages","company"],"customer\/account\/logout":["*","recently_viewed_product","recently_compared_product","persistent"],"customer\/account\/loginpost":["*"],"customer\/account\/createpost":["*"],"customer\/account\/editpost":["*"],"customer\/ajax\/login":["checkout-data","cart","captcha"],"catalog\/product_compare\/add":["compare-products"],"catalog\/product_compare\/remove":["compare-products"],"catalog\/product_compare\/clear":["compare-products"],"rest\/v1\/requisition_lists":["requisition"],"requisition_list\/requisition\/delete":["requisition"],"requisition_list\/item\/addtocart":["cart"],"sales\/guest\/reorder":["cart"],"sales\/order\/reorder":["cart"],"checkout\/cart\/add":["cart","directory-data"],"checkout\/cart\/delete":["cart"],"checkout\/cart\/updatepost":["cart"],"checkout\/cart\/updateitemoptions":["cart"],"checkout\/cart\/couponpost":["cart"],"checkout\/cart\/estimatepost":["cart"],"checkout\/cart\/estimateupdatepost":["cart"],"checkout\/onepage\/saveorder":["cart","checkout-data","last-ordered-items"],"checkout\/sidebar\/removeitem":["cart"],"checkout\/sidebar\/updateitemqty":["cart"],"rest\/*\/v1\/carts\/*\/payment-information":["cart","last-ordered-items","instant-purchase"],"rest\/*\/v1\/guest-carts\/*\/payment-information":["cart"],"rest\/*\/v1\/guest-carts\/*\/selected-payment-method":["cart","checkout-data"],"rest\/*\/v1\/carts\/*\/selected-payment-method":["cart","checkout-data","instant-purchase"],"customer_order\/cart\/updatefaileditemoptions":["cart"],"checkout\/cart\/updatefaileditemoptions":["cart"],"customer_order\/cart\/advancedadd":["cart"],"checkout\/cart\/advancedadd":["cart"],"checkout\/cart\/removeallfailed":["cart"],"checkout\/cart\/removefailed":["cart"],"customer_order\/cart\/addfaileditems":["cart"],"checkout\/cart\/addfaileditems":["cart"],"customer_order\/sku\/uploadfile":["cart"],"wishlist\/index\/add":["wishlist"],"wishlist\/index\/remove":["wishlist"],"wishlist\/index\/updateitemoptions":["wishlist"],"wishlist\/index\/update":["wishlist"],"wishlist\/index\/cart":["wishlist","cart"],"wishlist\/index\/fromcart":["wishlist","cart"],"wishlist\/index\/allcart":["wishlist","cart"],"wishlist\/shared\/allcart":["wishlist","cart"],"wishlist\/shared\/cart":["cart"],"giftregistry\/index\/cart":["cart"],"giftregistry\/view\/addtocart":["cart"],"customer\/address\/*":["instant-purchase"],"customer\/account\/*":["instant-purchase"],"vault\/cards\/deleteaction":["instant-purchase"],"multishipping\/checkout\/overviewpost":["cart"],"paypal\/express\/placeorder":["cart","checkout-data"],"paypal\/payflowexpress\/placeorder":["cart","checkout-data"],"paypal\/express\/onauthorization":["cart","checkout-data"],"rest\/*\/v1\/carts\/*\/po-payment-information":["cart","checkout-data","last-ordered-items"],"purchaseorder\/purchaseorder\/success":["cart","checkout-data","last-ordered-items"],"persistent\/index\/unsetcookie":["persistent"],"quickorder\/sku\/uploadfile\/":["cart"],"review\/product\/post":["review"],"braintree\/paypal\/placeorder":["cart","checkout-data"],"braintree\/googlepay\/placeorder":["cart","checkout-data"]},
+                "clientSideSections": ["checkout-data","cart-data"],
+                "baseUrls": ["https:\/\/www.spapartsproshop.com\/","http:\/\/www.spapartsproshop.com\/"],
+                "sectionNames": ["messages","customer","compare-products","requisition","last-ordered-items","cart","directory-data","captcha","wishlist","company","company_authorization","negotiable_quote","instant-purchase","purchase_order","persistent","review","recently_viewed_product","recently_compared_product","product_data_storage","paypal-billing-agreement"]            }
+        }
+    }</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Customer/js/customer-data": {
+                "sectionLoadUrl": "https\u003A\u002F\u002Fwww.spapartsproshop.com\u002Fcustomer\u002Fsection\u002Fload\u002F",
+                "expirableSectionLifetime": 60,
+                "expirableSectionNames": ["cart","persistent"],
+                "cookieLifeTime": "21600",
+                "updateSessionUrl": "https\u003A\u002F\u002Fwww.spapartsproshop.com\u002Fcustomer\u002Faccount\u002FupdateSession\u002F"
+            }
+        }
+    }</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Customer/js/invalidation-processor": {
+                "invalidationRules": {
+                    "website-rule": {
+                        "Magento_Customer/js/invalidation-rules/website-rule": {
+                            "scopeConfig": {
+                                "websiteId": "13"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }</script>
+<script type="text/x-magento-init">
+    {
+        "body": {
+            "pageCache": {"url":"https:\/\/www.spapartsproshop.com\/page_cache\/block\/render\/id\/1234\/?side_included=22708","handles":["default","catalog_category_view","catalog_category_view_type_layered","catalog_category_view_type_layered_without_children","catalog_category_view_displaymode_products","catalog_category_view_id_1234"],"originalRequest":{"route":"catalog","controller":"category","action":"view","uri":"\/controls\/spa-controls\/electronic\/complete?side_included=22708"},"versionCookieName":"private_content_version"}        }
+    }</script>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Banner/js/model/banner":
+            {"sectionLoadUrl":"https:\/\/www.spapartsproshop.com\/banner\/ajax\/load\/","cacheTtl":30000}        }
+}</script>
+<script src = "https://www.spapartsproshop.com/livechat/getvisitor/"></script>
+<script>
+  window.__lc = window.__lc || {};
+  window.__lc.license = 12957693;
+
+  if(livechat_visitor_data) {
+    window.__lc.visitor = livechat_visitor_data;
+  }
+
+  (function() {
+    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+    lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+  })();
+
+      var LC_API = LC_API || {};
+    LC_API.on_after_load = function() {
+      getCart();
+      setInterval(function(){
+        getCart();
+      }, 30000);
+    }
+
+    function getCart() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          LC_API.set_custom_variables(JSON.parse(this.responseText));
+        }
+      };
+      xhttp.open("GET", "https://www.spapartsproshop.com/livechat/getcart/"+"?success=0", true);
+      xhttp.send();
+    }
+
+  </script>
+<script type="text/x-magento-init">
+{
+	".quickview-product [data-role=quickview-button]": {
+		"productQuickview": {}
+	}
+}</script>
+<script>
+require([
+		'jquery',
+		'mage/mage',
+		'quickview/cloudzoom',
+		'quickview/bxslider'
+	], function ($) {
+	});</script>
+<script type="text/x-magento-init">
+    {
+        "body": {
+            "addToWishlist": {"productType":["simple","virtual","bundle","downloadable","giftcard","configurable","grouped"]}        }
+    }</script>
+<script type="text&#x2F;javascript">prodImageContainers = document.querySelectorAll(".product-image-container-144548");
+for (var i = 0; i < prodImageContainers.length; i++) {
+    prodImageContainers[i].style.width = "520px";
+}
+prodImageContainersWrappers = document.querySelectorAll(
+    ".product-image-container-144548  span.product-image-wrapper"
+);
+for (var i = 0; i < prodImageContainersWrappers.length; i++) {
+    prodImageContainersWrappers[i].style.paddingBottom = "100%";
+}</script>
+<script>
+    require([
+        'jquery',
+        "mage/tooltip"
+    ], function ($) {
+        $('.amshopby-option-link [data-amshopby-js="brand-tooltip"]').tooltip({
+            position: {
+                my: "left bottom-10",
+                at: "left top",
+                collision: "flipfit flip",
+                using: function (position, feedback) {
+                    $(this).css(position);
+                    $("<div>")
+                        .addClass("arrow")
+                        .addClass(feedback.vertical)
+                        .addClass(feedback.horizontal)
+                        .appendTo(this);
+                }
+            },
+            tooltipClass: "amshopby-brand-tooltip",
+            content: function () {
+                var current = $(this).is('a') ? $(this) : $(this).parent();
+                console.log(current);
+                return current.data('tooltip-content');
+            }
+        });
+    });</script>
+<script type="text&#x2F;javascript">prodImageContainers = document.querySelectorAll(".product-image-container-144551");
+for (var i = 0; i < prodImageContainers.length; i++) {
+    prodImageContainers[i].style.width = "520px";
+}
+prodImageContainersWrappers = document.querySelectorAll(
+    ".product-image-container-144551  span.product-image-wrapper"
+);
+for (var i = 0; i < prodImageContainersWrappers.length; i++) {
+    prodImageContainersWrappers[i].style.paddingBottom = "100%";
+}</script>
+<script type="text&#x2F;javascript">prodImageContainers = document.querySelectorAll(".product-image-container-147233");
+for (var i = 0; i < prodImageContainers.length; i++) {
+    prodImageContainers[i].style.width = "520px";
+}
+prodImageContainersWrappers = document.querySelectorAll(
+    ".product-image-container-147233  span.product-image-wrapper"
+);
+for (var i = 0; i < prodImageContainersWrappers.length; i++) {
+    prodImageContainersWrappers[i].style.paddingBottom = "100%";
+}</script>
+<script type="text&#x2F;javascript">prodImageContainers = document.querySelectorAll(".product-image-container-147257");
+for (var i = 0; i < prodImageContainers.length; i++) {
+    prodImageContainers[i].style.width = "520px";
+}
+prodImageContainersWrappers = document.querySelectorAll(
+    ".product-image-container-147257  span.product-image-wrapper"
+);
+for (var i = 0; i < prodImageContainersWrappers.length; i++) {
+    prodImageContainersWrappers[i].style.paddingBottom = "100%";
+}</script>
+<script type="text&#x2F;javascript">prodImageContainers = document.querySelectorAll(".product-image-container-147191");
+for (var i = 0; i < prodImageContainers.length; i++) {
+    prodImageContainers[i].style.width = "520px";
+}
+prodImageContainersWrappers = document.querySelectorAll(
+    ".product-image-container-147191  span.product-image-wrapper"
+);
+for (var i = 0; i < prodImageContainersWrappers.length; i++) {
+    prodImageContainersWrappers[i].style.paddingBottom = "100%";
+}</script>
+<script type="text/x-magento-init">
+			{
+				"[data-role=tocart-form], .form.map.checkout": {
+					"catalogAddToCart": {
+						"product_sku": "0612-300002"
+					}
+				}
+			}</script>
+<script type="text/x-magento-init">
+		{
+			".quickview-product [data-role=quickview-button]": {
+				"productQuickview": {}
+			}
+		}</script>
+<script type="text/x-magento-init">
+    {
+        "body": {
+            "requireCookie": {"noCookieUrl":"https:\/\/www.spapartsproshop.com\/cookie\/index\/noCookies\/","triggers":[".action.towishlist"],"isRedirectCmsPage":true}        }
+    }</script>
+<script type="text/x-magento-init">
+    {
+        ".sidebar #narrow-by-list": {
+            "accordion": {
+                "multipleCollapsible": true,
+                "active": [10]
+            }
+        }
+    }</script>
+<script type="text/x-magento-init">
+    {
+        ".products-grid, .products-list": {
+            "amShopbySwatchesChoose": {
+                "listSwatches": [{"side_included":"22708"}]            }
+        }
+    }</script>
+<script type="text/x-magento-init">
+    {
+        "#narrow-by-list": {
+            "amShopbyFiltersSync": {
+            }
+        }
+    }</script>
+<script type="text/x-magento-init">
+        {
+            "[data-role='sorter']": {
+                "Amasty_Sorting/js/direction": {
+                    "permanentDirectionMethods": ["price_asc","price_desc"]                }
+            }
+        }</script>
+<script type="text/x-magento-init">
+        {
+            "[data-am-js='filter-item-default']": {
+                "amShopbyFilterItemDefault": {
+                    "collectFilters": 0,
+                    "clearUrl": "https://www.spapartsproshop.com/controls/spa-controls/electronic/complete"
+                }
+            }
+        }</script>
+<script type="text/x-magento-init">
+    {
+        "#am-shopby-filter-attr_price_61e84ab08124b": {
+            "amShopbyFilterSlider": {
+                "sliderStyle": "-default",
+                "collectFilters": 0,
+                "template":"${from} - ${to}",
+                "currencySymbol":"$",
+                "currencyPosition":"0",
+                "step":5,
+                "from": "",
+                "to": "",
+                "deltaFrom": "0",
+                "deltaTo": "0",
+                "curRate": "1",
+                "min":396,
+                "max":566,
+                "url": "https://www.spapartsproshop.com/controls/spa-controls/electronic/complete?price=amshopby_slider_from-amshopby_slider_to&side_included=22708",
+                "code":"price",
+                "hideDisplay": 0            }
+        }
+    }</script>
+<script type="text/x-magento-init">
+                    {
+                        "#narrow-by-list": {
+                            "accordion": {
+                                "openedState": "active",
+                                "collapsible": true,
+                                "active": [10],
+                                "multipleCollapsible": true
+                            }
+                        }
+                    }</script>
+<script>
+    require([
+        'jquery',
+        'mage/mage'
+    ], function ($) {
+
+        $(".mobile-filters").on("click",function() {
+            $('#layered-ajax-filter-block').toggleClass('mobile-filters-active');
+        });
+
+        $(".mobile-filters-close").on("click",function() {
+            $('#layered-ajax-filter-block').removeClass('mobile-filters-active');
+        });
+    });</script>
+<script>
+    require(['jquery', 'domReady!'], function ($) {
+        $('#recaptcha-caa20ac351216e6f76edced1efe7c61fff5f4796-container')
+            .appendTo('#newsletter-validate-detail');
+    });</script>
+<script type="text/x-magento-init">
+{
+    "#recaptcha-caa20ac351216e6f76edced1efe7c61fff5f4796-container": {
+        "Magento_Ui/js/core/app": {"components":{"recaptcha-caa20ac351216e6f76edced1efe7c61fff5f4796":{"settings":{"rendering":{"sitekey":"6Ld29okdAAAAAMMg36ovCxvMLA74pdG75Z_y4Koq","badge":"bottomright","size":"invisible","theme":"light","hl":""},"invisible":true},"component":"Magento_ReCaptchaFrontendUi\/js\/reCaptcha","reCaptchaId":"recaptcha-caa20ac351216e6f76edced1efe7c61fff5f4796"}}}    }
+}</script>
+<script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "storage-manager": {
+                            "component": "Magento_Catalog/js/storage-manager",
+                            "appendTo": "",
+                            "storagesConfiguration" : {"recently_viewed_product":{"requestConfig":{"syncUrl":"https:\/\/www.spapartsproshop.com\/catalog\/product\/frontend_action_synchronize\/"},"lifetime":"1000","allowToSendRequest":null},"recently_compared_product":{"requestConfig":{"syncUrl":"https:\/\/www.spapartsproshop.com\/catalog\/product\/frontend_action_synchronize\/"},"lifetime":"1000","allowToSendRequest":null},"product_data_storage":{"updateRequestConfig":{"url":"https:\/\/www.spapartsproshop.com\/rest\/proshop_en_us\/V1\/products-render-info"},"requestConfig":{"syncUrl":"https:\/\/www.spapartsproshop.com\/catalog\/product\/frontend_action_synchronize\/"},"allowToSendRequest":null}}                        }
+                    }
+                }
+            }
+        }</script>
+<script>
+        var staticImpressions = staticImpressions || {};
+
+        staticImpressions['category.products.list'] = [
+             {
+                "id": "G6405",
+                "type": "simple",
+                "name": "BP7\u0020Control\u0020System\u0020Bundle\u0020230V\u0020Only,\u00204.0kW,\u0020w\u002FTP500\u0020Topside",
+                "category": "Complete",
+                "list": "Catalog\u0020Page",
+                "position": 1,
+                "listPosition": 1,
+                 "brand": "",
+                "price": "561.99"
+                 },
+             {
+                "id": "G6406",
+                "type": "simple",
+                "name": "BP7\u0020Control\u0020System\u0020Bundle\u0020230V\u0020Only,\u00204.0kW,\u0020w\u002FTP600\u0020Topside",
+                "category": "Complete",
+                "list": "Catalog\u0020Page",
+                "position": 2,
+                "listPosition": 2,
+                 "brand": "",
+                "price": "565.49"
+                 },
+             {
+                "id": "0610\u002D300004",
+                "type": "simple",
+                "name": "in.ye\u0020Electronic\u0020Control\u0020System\u0020115\u002F230V,\u00201.0\u002F4.0kW,\u0020Pump1,\u0020Blower\u0020or\u0020Pump2",
+                "category": "Complete",
+                "list": "Catalog\u0020Page",
+                "position": 3,
+                "listPosition": 3,
+                 "brand": "",
+                "price": "532.49"
+                 },
+             {
+                "id": "0610\u002D300003",
+                "type": "simple",
+                "name": "in.ye\u0020Electronic\u0020Control\u0020System\u0020240V,\u00204.0kW,\u00202\u0020Pumps,\u0020Blower\u0020or\u0020Pump3",
+                "category": "Complete",
+                "list": "Catalog\u0020Page",
+                "position": 4,
+                "listPosition": 4,
+                 "brand": "",
+                "price": "510.99"
+                 },
+             {
+                "id": "0612\u002D300002",
+                "type": "simple",
+                "name": "in.yj\u0020Electronic\u0020Control\u0020System\u00201.0\u002F4.0kW,\u0020Pump1\u0020Only,\u0020w\u002FK200\u0020Topside",
+                "category": "Complete",
+                "list": "Catalog\u0020Page",
+                "position": 5,
+                "listPosition": 5,
+                 "brand": "",
+                "price": "396.49"
+                 },
+             ];
+
+         require([
+            'jquery',
+            'domReady!'
+        ], function($){
+
+            $(document).trigger('absolunet:gtm:reloadImpressions', [
+                'category.products.list',
+                staticImpressions
+            ]);
+
+        });
+        </script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"23cc8654ff","applicationID":"277857658","transactionName":"NAMEYBYHCEVYBURfDQ1JJ1cQDwlYFgVRQgMPCQEbBwcSU14JQk9NFQ8DQw==","queueTime":0,"applicationTime":1423,"atts":"GEQTFl4dGxobBxIMGR4b","errorBeacon":"bam.nr-data.net","agent":""}</script></body></html>

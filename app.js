@@ -2,12 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const rootRouters = require('./routes/index');
 const mongoose = require('mongoose');
-const fs = require('fs')
 const app = express();
 
 // Configuring the database
 const dbConfig = require('./config/database.config');
-const downloadHtmlFromUrl = require('./crawlers');
 const createSeedData = require('./initial');
 mongoose.Promise = global.Promise;
 
