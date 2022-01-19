@@ -1,5 +1,5 @@
 const express = require('express');
-const { linkProductsPageByCategory } = require('../parser');
+const { linkProductsPageByCategory, getProductsByProductAttribute } = require('../parser');
 const router = express.Router();
 const fs = require('fs')
 const path = require('path');
@@ -55,6 +55,19 @@ router.post('/', async(req, res) => {
             links.map(async link => {
                 const fileName = getFileName(link);
                 await saveHtmlFromUrl(link, `template-${fileName}.html`, `/${parentCate}/${subCate}`)
+            });
+
+            links.map(async link => {
+                if(link === "https://www.spapartsproshop.com/controls/spa-controls/electronic/complete/brand_gecko-alliance") {
+                    const fileName = getFileName(link);
+                    const { productTotal, productsLink } = await getProductsByProductAttribute(`templates/${parentCate}/${subCate}/template-${fileName}.html`);
+
+                    productsLink.map(async productLink => {
+                        const arr = productLink.split("/");
+                        const productName = arr[arr.length - 1];
+                        await saveHtmlFromUrl(productLink, productName, 'products');
+                    })
+                }
             })
         } catch (error) {
             console.error(error);

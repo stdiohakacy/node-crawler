@@ -36,7 +36,24 @@ async function linkProductsPageByCategory(path, linkParent) {
     return links;
 }
 
+async function getProductsByProductAttribute(path) {
+    const productPageBuffer = fs.readFileSync(path);
+    const $ = cheerio.load(productPageBuffer);
+    const productTotalDuplicate = $("#toolbar-amount .toolbar-number:last-child").text();
+    const productLinks = [];
+    $(".product-photo").each((idx, el) => {
+        productLinks.push($(el).find("a").attr("href"))
+    });
+
+    let productTotal = String(productTotalDuplicate).split("");
+    return {
+        productTotal: productTotal.slice(0, productTotal.length / 2).join(""),
+        productsLink: productLinks
+    };
+}
+
 module.exports = {
     parseHomePage,
-    linkProductsPageByCategory
+    linkProductsPageByCategory,
+    getProductsByProductAttribute
 };
