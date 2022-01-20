@@ -52,8 +52,54 @@ async function getProductsByProductAttribute(path) {
     };
 }
 
+async function getProductByProductDetail(path) {
+    const productDetailPageBuffer = fs.readFileSync(path);
+    const $ = cheerio.load(productDetailPageBuffer);
+    let arrTitle = $(".page-title span").text().split(" ");
+    arrTitle.shift();
+    const branchLabel = $(".amshopby-brand-label").text();
+    const title = arrTitle.join(" ");
+    const price = $(".box-inner1 .price-box.price-final_price span span .price").text();
+    const mark = $(".product-sku-avail div:last-child").text();
+    const sku = $(".product.attribute.sku div").text();
+
+    let productDetail = {};
+    $('.specification-details table tbody tr td').each((idx, el) => {
+        const arr = $(el).text().split(":");
+        let key = arr[0];
+        const strSplit = key.split(" ");
+        for (let i = 0; i < strSplit.length; i++) {
+            strSplit[i] = strSplit[i].charAt(0).toUpperCase() + strSplit[i].slice(1);
+        }
+        key = strSplit.join(" ")
+        if(key === "Ozone/CircPump Circuit") {
+            key = "CircPump Circuit"
+        }
+        key = key.replace(/ /g, '').charAt(0).toLowerCase() + key.replace(/ /g, '').slice(1);
+        productDetail[`${key}`] = arr[1].trim();
+    });
+
+    let productMoreInfo = {};
+    $(".additional-information div").each((idx, el) => {
+        $(el).find("p").each((idx, el) => {
+            const arr = $(el).text().split("-");
+            let key = arr[0];
+            const strSplit = key.split(" ");
+            for (let i = 0; i < strSplit.length; i++) {
+                strSplit[i] = strSplit[i].charAt(0).toUpperCase() + strSplit[i].slice(1);
+            }
+            key = strSplit.join(" ")
+            key = key.replace(/ /g, '').charAt(0).toLowerCase() + key.replace(/ /g, '').slice(1);
+            productMoreInfo[`${key}`] = arr[1].trim();
+        })
+    })
+
+    return { branchLabel, title, price, mark, sku, productDetail, productMoreInfo }
+}
+
 module.exports = {
     parseHomePage,
     linkProductsPageByCategory,
-    getProductsByProductAttribute
+    getProductsByProductAttribute,
+    getProductByProductDetail
 };

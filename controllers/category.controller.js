@@ -1,11 +1,11 @@
 const Category = require('../models/category.model');
-const mongoose = require('mongoose');
 
 exports.create = async (data) => {
-    const { title, parentId } = data
+    const { title, parentId, path } = data
     const category = new Category();
     category.title = title;
     category.parentId = parentId;
+    category.path = path;
     
     return await category.save();
 }
@@ -20,6 +20,10 @@ exports.getById = async id => {
 
 exports.getByName = async name => {
     return await Category.findOne({ name }).exec();
+}
+
+exports.findLikeTitle = async title => {
+    return await Category.findOne({ title:{ $regex: '.*' + title + '.*' } });
 }
 
 exports.findAll = async () => {

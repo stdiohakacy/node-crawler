@@ -1,9 +1,11 @@
 const express = require('express');
-const { linkProductsPageByCategory, getProductsByProductAttribute } = require('../parser');
+const { linkProductsPageByCategory, getProductsByProductAttribute, getProductByProductDetail } = require('../parser');
 const router = express.Router();
 const fs = require('fs')
 const path = require('path');
 const { saveHtmlFromUrl } = require('../crawlers');
+const categoryController = require('../controllers/category.controller');
+const productController = require('../controllers/product.controller')
 
 function getFileName(url) {
     let fromIdx = 0;
@@ -61,13 +63,17 @@ router.post('/', async(req, res) => {
         `https://www.spapartsproshop.com/controls/spa-controls/electronic/complete`
     ]
 
+    let productDetails = [];
+    let category;
     while(linksToVisit.length > 0) {
         try {
             const currentUrl = linksToVisit.pop();
             if(visitedLinks.includes(currentUrl))
                 continue;
             console.log(`Now crawling ${currentUrl}`);
+
             const [parentCate, subCate] = createStructureFolder(currentUrl);
+            category = await categoryController.findLikeTitle(subCate.charAt(0).toUpperCase() + subCate.slice(1))
             await saveHtmlFromUrl(currentUrl, `template-${subCate}.html`, `/${parentCate}/${subCate}`)
             let links = await linkProductsPageByCategory(`templates/${parentCate}/${subCate}/template-${subCate}.html`, currentUrl);
             
@@ -80,7 +86,14 @@ router.post('/', async(req, res) => {
                     const fileName = getFileName(link);
                     const { productTotal, productsLink } = await getProductsByProductAttribute(`templates/${parentCate}/${subCate}/template-${fileName}.html`);
 
-                    await downloadProducts(productsLink);
+                    await Promise.all(
+                        productsLink.map(async productLink => {
+                            const arr = productLink.split("/");
+                            const productName = arr[arr.length - 1];
+                            const pathFile = await saveHtmlFromUrl(productLink, `${productName}.html`, 'products');
+                            productDetails.push(pathFile);
+                        })
+                    );
 
                     if(Math.ceil(productTotal / 12) > 1) {
                         for(let i = 2; i <= Math.ceil(productTotal / 12); i++) {
@@ -88,15 +101,33 @@ router.post('/', async(req, res) => {
 
                             const { productsLink } = await getProductsByProductAttribute(`templates/${parentCate}/${subCate}/template-${getFileName(link)}?p=${i}.html`);
 
-                            await downloadProducts(productsLink);
+                            await Promise.all(
+                                productsLink.map(async productLink => {
+                                    const arr = productLink.split("/");
+                                    const productName = arr[arr.length - 1];
+                                    const pathFile = await saveHtmlFromUrl(productLink, `${productName}.html`, 'products');
+                                    productDetails.push(pathFile);
+                                })
+                            );
                         }
                     }
                 })
             )
+
         } catch (error) {
             console.error(error);
         }
     }
+    productDetails = [...new Set(productDetails)];
+    await Promise.all(
+        productDetails.map(async prodDetail => {
+            if(prodDetail === "/Users/duynguyen/Desktop/123/crawler-nodejs-2/templates/products/rs81-electronic-control-system-462005rs-81.html") {
+               const product = await getProductByProductDetail(prodDetail);
+               product.categoryId = category._id;
+               await productController.create(product);
+            }
+        })
+    )
 
     return res.json({ isSuccess: true })
 })

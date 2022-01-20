@@ -16,8 +16,7 @@ async function saveHtmlFromUrl(url, name, p) {
     const result = await needle("get", url);
     const html = result.body;
     const pathFile = path.join(__dirname, `../templates/${p}/${name}`)
-    if(!fs.existsSync(pathFile))
-        fs.writeFileSync(pathFile, html)
+    if(!fs.existsSync(pathFile)) fs.writeFileSync(pathFile, html)
 
     return pathFile;
 }

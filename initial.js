@@ -1,6 +1,6 @@
 const Category = require('./models/category.model');
-const parseHomePage = require('./parser');
 const categoryController = require('./controllers/category.controller');
+const { parseHomePage } = require('./parser');
 
 async function initData(list, model, field) {
     const existingDocs = await model.find();
@@ -23,6 +23,7 @@ async function createSeedData() {
         const homePageData = await parseHomePage();
         await categoryController.bulkCreate(homePageData);
     }
+    
 }
 
 module.exports = createSeedData;
