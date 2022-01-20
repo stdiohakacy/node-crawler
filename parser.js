@@ -82,15 +82,18 @@ async function getProductByProductDetail(path) {
     let productMoreInfo = {};
     $(".additional-information div").each((idx, el) => {
         $(el).find("p").each((idx, el) => {
-            const arr = $(el).text().split("-");
-            let key = arr[0];
-            const strSplit = key.split(" ");
-            for (let i = 0; i < strSplit.length; i++) {
-                strSplit[i] = strSplit[i].charAt(0).toUpperCase() + strSplit[i].slice(1);
+            const findIdx = $(el).text().indexOf("-");
+            let arr = [$(el).text().substring(0, findIdx), $(el).text().substring(findIdx + 1, $(el).text().length)]
+            if(arr[0] !== "") {
+                let key = arr[0];
+                const strSplit = key.split(" ");
+                for (let i = 0; i < strSplit.length; i++) {
+                    strSplit[i] = strSplit[i].charAt(0).toUpperCase() + strSplit[i].slice(1);
+                }
+                key = strSplit.join(" ")
+                key = key.replace(/ /g, '').charAt(0).toLowerCase() + key.replace(/ /g, '').slice(1);
+                productMoreInfo[`${key}`] = arr[1].trim();
             }
-            key = strSplit.join(" ")
-            key = key.replace(/ /g, '').charAt(0).toLowerCase() + key.replace(/ /g, '').slice(1);
-            productMoreInfo[`${key}`] = arr[1].trim();
         })
     })
 

@@ -47,3 +47,7 @@ exports.create = async (data) => {
     product.categoryId = categoryId
     return await product.save();
 }
+
+exports.getByTitle = async (title) => {
+    return Product.findOne({ title })
+}

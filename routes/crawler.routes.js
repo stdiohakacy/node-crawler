@@ -113,7 +113,6 @@ router.post('/', async(req, res) => {
                     }
                 })
             )
-
         } catch (error) {
             console.error(error);
         }
@@ -121,11 +120,11 @@ router.post('/', async(req, res) => {
     productDetails = [...new Set(productDetails)];
     await Promise.all(
         productDetails.map(async prodDetail => {
-            if(prodDetail === "/Users/duynguyen/Desktop/123/crawler-nodejs-2/templates/products/rs81-electronic-control-system-462005rs-81.html") {
-               const product = await getProductByProductDetail(prodDetail);
-               product.categoryId = category._id;
-               await productController.create(product);
-            }
+            const product = await getProductByProductDetail(prodDetail);
+            product.categoryId = category._id;
+            const isExist = await productController.getByTitle(product.title);
+            if(!isExist)
+                await productController.create(product);
         })
     )
 
