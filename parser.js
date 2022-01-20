@@ -52,6 +52,12 @@ async function getProductsByProductAttribute(path) {
     };
 }
 
+async function getProductImgUrls(path) {
+    const buffer = fs.readFileSync(path);
+    const $ = cheerio.load(buffer);
+    return $(".gallery-placeholder__image").attr("src");
+}
+
 async function getProductByProductDetail(path) {
     const productDetailPageBuffer = fs.readFileSync(path);
     const $ = cheerio.load(productDetailPageBuffer);
@@ -104,5 +110,6 @@ module.exports = {
     parseHomePage,
     linkProductsPageByCategory,
     getProductsByProductAttribute,
-    getProductByProductDetail
+    getProductByProductDetail,
+    getProductImgUrls
 };

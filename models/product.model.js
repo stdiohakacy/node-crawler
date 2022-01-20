@@ -80,6 +80,10 @@ const ProductSchema = mongoose.Schema({
         required: false,
         default: '',
     },
+    imgUrls: {
+        type: [String],
+        default: [],
+    },
     moreInformation: {
         type: Object,
         default: {}

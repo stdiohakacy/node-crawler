@@ -1,11 +1,12 @@
 const express = require('express');
-const { linkProductsPageByCategory, getProductsByProductAttribute, getProductByProductDetail } = require('../parser');
+const { linkProductsPageByCategory, getProductsByProductAttribute, getProductByProductDetail, getProductImgUrls } = require('../parser');
 const router = express.Router();
 const fs = require('fs')
 const path = require('path');
 const { saveHtmlFromUrl } = require('../crawlers');
 const categoryController = require('../controllers/category.controller');
 const productController = require('../controllers/product.controller')
+const needle = require('needle')
 
 function getFileName(url) {
     let fromIdx = 0;
@@ -120,8 +121,10 @@ router.post('/', async(req, res) => {
     productDetails = [...new Set(productDetails)];
     await Promise.all(
         productDetails.map(async prodDetail => {
+            const imgUrl = await getProductImgUrls(prodDetail);
             const product = await getProductByProductDetail(prodDetail);
             product.categoryId = category._id;
+            product.imgUrls = [imgUrl]
             const isExist = await productController.getByTitle(product.title);
             if(!isExist)
                 await productController.create(product);

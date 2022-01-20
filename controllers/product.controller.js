@@ -10,6 +10,7 @@ exports.create = async (data) => {
         sku,
         productDetail,
         productMoreInfo,
+        imgUrls,
         categoryId
     } = data;
     const { 
@@ -43,6 +44,7 @@ exports.create = async (data) => {
     product.keypadIncluded = keypadIncluded
     product.systemVoltage = systemVoltage
     product.circPumpCircuit = circPumpCircuit
+    product.imgUrls = imgUrls
     product.moreInformation = productMoreInfo
     product.categoryId = categoryId
     return await product.save();
