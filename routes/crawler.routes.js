@@ -65,8 +65,16 @@ router.post('/', async(req, res) => {
                     productsLink.map(async productLink => {
                         const arr = productLink.split("/");
                         const productName = arr[arr.length - 1];
-                        await saveHtmlFromUrl(productLink, productName, 'products');
+                        await saveHtmlFromUrl(productLink, `${productName}.html`, 'products');
                     })
+
+                    if(Math.ceil(productTotal / 12) > 1) {
+                        for(let i = 2; i <= Math.ceil(productTotal / 12); i++) {
+                            const name = getFileName(link);
+                            console.log(name);
+                            // await saveHtmlFromUrl(link, `template-${fileName}.html`, `/${parentCate}/${subCate}`)
+                        }
+                    }
                 }
             })
         } catch (error) {
