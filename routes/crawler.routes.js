@@ -52,29 +52,32 @@ router.post('/', async(req, res) => {
             let links = await linkProductsPageByCategory(`templates/${parentCate}/${subCate}/template-${subCate}.html`, currentUrl);
             
             links = links.filter(link => (!link.includes('?p=') && link !== currentUrl));
-            links.map(async link => {
-                const fileName = getFileName(link);
-                await saveHtmlFromUrl(link, `template-${fileName}.html`, `/${parentCate}/${subCate}`)
-            });
-
-            links.map(async link => {
-                if(link === "https://www.spapartsproshop.com/controls/spa-controls/electronic/complete/brand_gecko-alliance") {
+            await Promise.all(
+                links.map(async link => {
                     const fileName = getFileName(link);
-                    const { productTotal, productsLink } = await getProductsByProductAttribute(`templates/${parentCate}/${subCate}/template-${fileName}.html`);
-
-                    productsLink.map(async productLink => {
-                        const arr = productLink.split("/");
-                        const productName = arr[arr.length - 1];
-                        await saveHtmlFromUrl(productLink, `${productName}.html`, 'products');
-                    })
-
-                    if(Math.ceil(productTotal / 12) > 1) {
-                        for(let i = 2; i <= Math.ceil(productTotal / 12); i++) {
-                            await saveHtmlFromUrl(`${link}?p=${i}`, `template-${getFileName(link)}?p=${i}.html`, `/${parentCate}/${subCate}`)
+                    await saveHtmlFromUrl(link, `template-${fileName}.html`, `/${parentCate}/${subCate}`)
+                })
+            );
+            await Promise.all(
+                links.map(async link => {
+                    if(link === "https://www.spapartsproshop.com/controls/spa-controls/electronic/complete/brand_gecko-alliance") {
+                        const fileName = getFileName(link);
+                        const { productTotal, productsLink } = await getProductsByProductAttribute(`templates/${parentCate}/${subCate}/template-${fileName}.html`);
+    
+                        productsLink.map(async productLink => {
+                            const arr = productLink.split("/");
+                            const productName = arr[arr.length - 1];
+                            await saveHtmlFromUrl(productLink, `${productName}.html`, 'products');
+                        })
+    
+                        if(Math.ceil(productTotal / 12) > 1) {
+                            for(let i = 2; i <= Math.ceil(productTotal / 12); i++) {
+                                await saveHtmlFromUrl(`${link}?p=${i}`, `template-${getFileName(link)}?p=${i}.html`, `/${parentCate}/${subCate}`)
+                            }
                         }
                     }
-                }
-            })
+                })
+            )
         } catch (error) {
             console.error(error);
         }
