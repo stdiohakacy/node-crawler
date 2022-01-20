@@ -70,9 +70,7 @@ router.post('/', async(req, res) => {
 
                     if(Math.ceil(productTotal / 12) > 1) {
                         for(let i = 2; i <= Math.ceil(productTotal / 12); i++) {
-                            const name = getFileName(link);
-                            console.log(name);
-                            // await saveHtmlFromUrl(link, `template-${fileName}.html`, `/${parentCate}/${subCate}`)
+                            await saveHtmlFromUrl(`${link}?p=${i}`, `template-${getFileName(link)}?p=${i}.html`, `/${parentCate}/${subCate}`)
                         }
                     }
                 }
