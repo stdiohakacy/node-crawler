@@ -35,6 +35,26 @@ function createStructureFolder(currentUrl){
     return [parentCate, subCate];
 }
 
+async function downloadProductsByProductAttribute(links, parentCate, subCate) {
+    await Promise.all(
+        links.map(async link => {
+            const fileName = getFileName(link);
+            await saveHtmlFromUrl(link, `template-${fileName}.html`, `/${parentCate}/${subCate}`)
+        })
+    );
+}
+
+async function downloadProducts(productsLink) {
+    await Promise.all(
+        productsLink.map(async productLink => {
+            const arr = productLink.split("/");
+            const productName = arr[arr.length - 1];
+            await saveHtmlFromUrl(productLink, `${productName}.html`, 'products');
+        })
+    )
+}
+
+
 router.post('/', async(req, res) => {
     const visitedLinks = [];
     let linksToVisit = [
@@ -52,28 +72,23 @@ router.post('/', async(req, res) => {
             let links = await linkProductsPageByCategory(`templates/${parentCate}/${subCate}/template-${subCate}.html`, currentUrl);
             
             links = links.filter(link => (!link.includes('?p=') && link !== currentUrl));
+
+            await downloadProductsByProductAttribute(links, parentCate, subCate);
+
             await Promise.all(
                 links.map(async link => {
                     const fileName = getFileName(link);
-                    await saveHtmlFromUrl(link, `template-${fileName}.html`, `/${parentCate}/${subCate}`)
-                })
-            );
-            await Promise.all(
-                links.map(async link => {
-                    if(link === "https://www.spapartsproshop.com/controls/spa-controls/electronic/complete/brand_gecko-alliance") {
-                        const fileName = getFileName(link);
-                        const { productTotal, productsLink } = await getProductsByProductAttribute(`templates/${parentCate}/${subCate}/template-${fileName}.html`);
-    
-                        productsLink.map(async productLink => {
-                            const arr = productLink.split("/");
-                            const productName = arr[arr.length - 1];
-                            await saveHtmlFromUrl(productLink, `${productName}.html`, 'products');
-                        })
-    
-                        if(Math.ceil(productTotal / 12) > 1) {
-                            for(let i = 2; i <= Math.ceil(productTotal / 12); i++) {
-                                await saveHtmlFromUrl(`${link}?p=${i}`, `template-${getFileName(link)}?p=${i}.html`, `/${parentCate}/${subCate}`)
-                            }
+                    const { productTotal, productsLink } = await getProductsByProductAttribute(`templates/${parentCate}/${subCate}/template-${fileName}.html`);
+
+                    await downloadProducts(productsLink);
+
+                    if(Math.ceil(productTotal / 12) > 1) {
+                        for(let i = 2; i <= Math.ceil(productTotal / 12); i++) {
+                            await saveHtmlFromUrl(`${link}?p=${i}`, `template-${getFileName(link)}?p=${i}.html`, `/${parentCate}/${subCate}`)
+
+                            const { productsLink } = await getProductsByProductAttribute(`templates/${parentCate}/${subCate}/template-${getFileName(link)}?p=${i}.html`);
+
+                            await downloadProducts(productsLink);
                         }
                     }
                 })
@@ -82,41 +97,6 @@ router.post('/', async(req, res) => {
             console.error(error);
         }
     }
-    
-    // visitedLinks.push(linksToVisit[0]);
-    // linksToVisit.shift();
-
-
-
-    // const dir = path.join(__dirname, '../templates/controls')
-    // if (!fs.existsSync(dir)) fs.mkdirSync(dir);
-    // const templateName = await downloadHtmlFromUrl(links[1], 'controls');
-
-    // const visitedLinks = [];
-    // let linksToVisit = [
-    //     "https://www.spapartsproshop.com/controls/spa-controls/electronic/complete"
-    // ]
-
-    // while(linksToVisit.length > 0) {
-    //     try {
-    //         const currentUrl = linksToVisit.pop();
-    //         if(visitedLinks.includes(currentUrl))
-    //             continue;
-    //         console.log(`Now crawling ${currentUrl}`);
-
-    //         const html = await httpRequest.getRequest(`https://www.amazon.com${currentUrl}`);
-    //         const parsedResult = parseAll(html);
-    //         const cleanLinks = parsedResult.productLinks.map(link => link.slice(0, 14));
-
-    //         linksToVisit = [...linksToVisit, ...cleanLinks];
-    //         console.log(parsedResult);
-    //         visitedLinks.push(currentUrl);
-    //         await sleep(5000);
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
-
 
     return res.json({ isSuccess: true })
 })
