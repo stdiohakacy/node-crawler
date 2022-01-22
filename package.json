@@ -1,5 +1,5 @@
 {
-  "name": "crawler-nodejs-2",
+  "name": "spapart-node-crawler",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,13 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.25.0",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.10",
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "mongoose": "^6.1.7",
     "needle": "^3.0.0",
-    "nodemon": "^2.0.15",
-    "query-string": "^7.1.0"
+    "nodemon": "^2.0.15"
   }
 }
