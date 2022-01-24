@@ -34,7 +34,7 @@ async function getLinksPagination(link) {
     const total = results[results.length - 2];
     if(Math.ceil(total / 12) > 1) {
         for(let i = 2; i <= Math.ceil(total / 12); i++) {
-            linksPagination.push(`${link}&p=${i}`)
+            linksPagination.push(`${link}?p=${i}`)
         }
     }
     return linksPagination;
@@ -71,7 +71,8 @@ async function getLinksProductDetail(linkPagination) {
 
     let links = $("a").map(
         (idx, el) => $(el).attr("href")
-    ).get().filter(link => {
+    ).get()
+    .filter(link => {
         if(
             !linkValid(link) 
             || includeBlog(link) 
