@@ -3,27 +3,6 @@ const path = require('path')
 const fs = require('fs')
 const cheerio = require('cheerio')
 const axios = require('axios').default;
-// async function downloadHtmlFromLink(linkProductDetail, productName) {
-//     const result = await needle("get", linkProductDetail);
-//     const html = result.body;
-//     const pathFile = path.join(__dirname, `../templates/products/${productName}.html`)
-//     if(!fs.existsSync(pathFile))
-//         fs.writeFileSync(pathFile, html)
-
-//     return pathFile;
-// }
-
-// async function getProductDetailLinks(parentLink) {
-//     const result = await needle("get", parentLink);
-//     const html = result.body;
-//     const $ = cheerio.load(html);
-//     let links = $("a").map(
-//         (idx, el) => $(el).attr("href")
-//     ).get()
-//     links = [...new Set(links)];
-
-//     return links;
-// }
 
 async function getLinksPagination(link) {
     const linksPagination = [link];
@@ -108,7 +87,6 @@ async function getImageUrls(sku) {
     const url = `https://www.spapartsproshop.com/rest/all/V1/products-render-info?searchCriteria[filterGroups][0][filters][0][conditionType]=like&storeId=2&currencyCode=usd&searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][value]=${sku}`
 
     const response = await axios.get(url)
-    console.log(response?.data?.items[0]?.images[0]?.url);
     return response?.data?.items[0]?.images[0]?.url;
 }
 
@@ -123,6 +101,44 @@ function getAdditionalAttributes($) {
         }
     });
     return result.substring(0, result.length - 1);
+}
+
+function getDescription($) {
+    let description = ``;
+    $('.additional-information div p').each((idx, el) => {
+        description = description.concat($(el).text().trim()).concat('<br/>')
+    });
+    return description;
+}
+
+function getRelatedSkus($) {
+    const relatedSkus = [];
+    $('.alternate_part_numbers-list li').each((idx, el) => {
+        relatedSkus.push($(el).text().trim());
+    })
+    return relatedSkus;
+}
+
+function getQty($) {
+    let qty = -1;
+    $(".product-sku-avail div").each((idx, el) => {
+        if(idx === 1) {
+            switch ($(el).text().trim()) {
+                case "Available":
+                    qty = 10;
+                    break;
+                case "Limited quantities":
+                    qty = 1;
+                    break;
+                case "Out-of-stock":
+                    qty = 0;
+                    break;
+                default:
+                    break;
+            }
+        }
+    })
+    return qty;
 }
 
 async function getDataFromProductDetailPage(linkProduct) {
@@ -142,9 +158,15 @@ async function getDataFromProductDetailPage(linkProduct) {
     const additional_attributes = getAdditionalAttributes($);
     const base_image = await getImageUrls(sku)
     const part_manufactures = $(".amshopby-brand-label").text();
+    const short_description = $(".product.attribute.overview div").text();
+    const description = getDescription($);
+    const related_skus = getRelatedSkus($);
+    const qty = getQty($);
+    console.log(qty);
 
     const data =  { 
-        sku, categories, name, price, url_key, meta_title, meta_keyword, meta_description, created_at, updated_at, additional_attributes, part_manufactures
+        sku, categories, name, price, url_key, meta_title, meta_keyword, meta_description, 
+        created_at, updated_at, additional_attributes, part_manufactures, short_description, description, related_skus, qty
     }
     if(base_image) {
         data.base_image = base_image;
