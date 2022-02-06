@@ -108,6 +108,11 @@ function getDescription($) {
     $('.additional-information div p').each((idx, el) => {
         description = description.concat($(el).text().trim()).concat('<br/>')
     });
+    if(!description) {
+        $('.additional-information div').each((idx, el) => {
+            description = description.concat($(el).text().trim()).concat('<br/>')
+        });
+    }
     return description;
 }
 
@@ -116,7 +121,7 @@ function getRelatedSkus($) {
     $('.alternate_part_numbers-list li').each((idx, el) => {
         relatedSkus.push($(el).text().trim());
     })
-    return relatedSkus;
+    return `related_skus=${relatedSkus.join("|")}` ;
 }
 
 function getQty($) {
@@ -162,8 +167,6 @@ async function getDataFromProductDetailPage(linkProduct) {
     const description = getDescription($);
     const related_skus = getRelatedSkus($);
     const qty = getQty($);
-    console.log(qty);
-
     const data =  { 
         sku, categories, name, price, url_key, meta_title, meta_keyword, meta_description, 
         created_at, updated_at, additional_attributes, part_manufactures, short_description, description, related_skus, qty

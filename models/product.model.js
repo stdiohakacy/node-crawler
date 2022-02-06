@@ -337,8 +337,9 @@ const ProductSchema = mongoose.Schema({
         default: 0
     },
     related_skus: {
-        type: [String],
-        default: []
+        type: String,
+        require: false,
+        default: ''
     },
     related_position: {
         type: String,

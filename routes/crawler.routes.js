@@ -27,12 +27,15 @@ router.post('/', async(req, res) => {
     linksProduct = linksProduct.flat();
     
     for (const linkProduct of linksProduct) {
+        // if(linkProduct === "https://www.spapartsproshop.com/life-spa-electronic-control-system-smtd1000") {
         const product = await getDataFromProductDetailPage(linkProduct);
         const { name, sku } = product;
         const isProductExist = await productController.isExist(name, sku);
         if(!isProductExist);
             await productController.create(product);
-        await sleep(500);
+            console.log(product);
+        await sleep(300);
+        // }
     }
 
     return res.json({ isSuccess: true })
